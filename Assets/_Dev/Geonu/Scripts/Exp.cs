@@ -10,4 +10,10 @@ public class Exp : DropItem
     {
         this.amount = amount;
     }
+
+    protected override void Get()
+    {
+        // playerManager GetExp(amount) call
+        // GameManager.GetInstance().playerManager.GetExp(amount);
+    }
 }

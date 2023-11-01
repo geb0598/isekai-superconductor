@@ -10,4 +10,10 @@ public class Coin : DropItem
     {
         this.amount = amount;
     }
+
+    protected override void Get()
+    {
+        // playerManager GetCoin(amount) call
+        // GameManager.GetInstance().playerManager.GetCoin(amount);
+    }
 }
