@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager
 {
     private static PlayerManager _instance;
 
@@ -31,6 +31,8 @@ public class PlayerManager : MonoBehaviour
     private bool _isInvincible = false;
 
     private bool _isDead = false;
+
+    public static PlayerManager instance { get => _instance ?? (_instance = new PlayerManager()); }
 
     public int healthPoints { get => _healthPoints; }
 
@@ -110,8 +112,4 @@ public class PlayerManager : MonoBehaviour
     {
 
     }
-
-    public static PlayerManager GetInstance() { return _instance; }
-
-
 }
