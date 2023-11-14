@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody2d;
     private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _hitPointSpriteRenderer;
 
     private Vector2 _inputVector;
     private float _movementSpeed;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody2d = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _hitPointSpriteRenderer = GetComponentsInChildren<SpriteRenderer>()[1];
         _movementSpeed = defaultSpeed;
     }
 
@@ -62,11 +64,13 @@ public class PlayerController : MonoBehaviour
     {
         _focus = true;
         _movementSpeed = defaultFocusSpeed;
+        _hitPointSpriteRenderer.enabled = true;
     }
 
     private void FocusReleased()
     {
         _focus = false;
         _movementSpeed = defaultSpeed;
+        _hitPointSpriteRenderer.enabled = false;
     }
 }

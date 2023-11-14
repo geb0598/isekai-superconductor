@@ -13,15 +13,15 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - HitPoint
   - Water
   - UI
   - RangedEnemy
   - MeleeEnemy
   - EnemyBullet
-  - 
-  - 
-  - 
+  - Player
+  - Weapon
+  - Enemy
   - 
   - 
   - 
