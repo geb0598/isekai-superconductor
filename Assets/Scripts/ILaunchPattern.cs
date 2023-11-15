@@ -34,7 +34,6 @@ public class CircularLaunchPattern : ILaunchPattern
 
     public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount)
     {
-        // not yet implemented
         directions.Clear();
 
         float angle = 360.0f / bulletCount;
@@ -42,7 +41,8 @@ public class CircularLaunchPattern : ILaunchPattern
 
         for (int i = 0; i < bulletCount; i++)
         {
-            directions.Add(Quaternion.Euler(0.0f, 0.0f, cumulativeAngle) * direction);
+            Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, cumulativeAngle);
+            directions.Add(rotation * direction);
 
             if (_isClockwise)
             {

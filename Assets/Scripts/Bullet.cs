@@ -10,26 +10,28 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private bool _isPenetrative = false;
 
+    [SerializeField] private bool _hasLifeTime;
     [SerializeField] private float _lifeTimeSeconds;
 
+    protected Rigidbody2D _rigidbody;
+
+    protected Transform _launcherTransform;
+
     protected Vector2 _direction;
-    protected Vector2 _position;
 
-    private Rigidbody2D _rigidbody;
+    protected bool _isPlayerBullet;
 
-    private bool _isPlayerBullet;
-
-    private float _damage;
+    protected float _damage;
 
     private float _elapsedTimeSeconds;
 
-    public void Initialize(Vector2 position, Vector2 direction, bool isPlayerBullet, float damage)
+    public virtual void Initialize(Transform launcherTransform, Vector2 direction, bool isPlayerBullet, float damage)
     {
-        _position = position;
-        transform.position = _position;
+        _launcherTransform = launcherTransform;
+        _rigidbody = GetComponent<Rigidbody2D>();
+        transform.position = _launcherTransform.position;
         _direction = direction.normalized;
         transform.rotation = Quaternion.FromToRotation(Vector3.up, _direction);
-        _rigidbody = GetComponent<Rigidbody2D>();
         _isPlayerBullet = isPlayerBullet;
         _damage = damage;
         _elapsedTimeSeconds = 0.0f;
@@ -45,7 +47,7 @@ public class Bullet : MonoBehaviour
     {
         _elapsedTimeSeconds += Time.deltaTime;
 
-        if (_elapsedTimeSeconds > _lifeTimeSeconds )
+        if (_hasLifeTime && _elapsedTimeSeconds > _lifeTimeSeconds)
         {
             Destroy(gameObject);
         }

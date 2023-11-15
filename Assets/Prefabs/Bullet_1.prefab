@@ -66,6 +66,7 @@ MonoBehaviour:
   _speed: 15
   _acceleration: 0
   _isPenetrative: 0
+  _hasLifeTime: 1
   _lifeTimeSeconds: 10
 --- !u!50 &-251305009077218500
 Rigidbody2D:

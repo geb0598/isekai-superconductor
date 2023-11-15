@@ -7,6 +7,7 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private List<GameObject> _bulletPrefabs;
     [SerializeField] private int _bulletCount;
 
+    [SerializeField] private bool _hasLaunchDelay;
     [SerializeField] private float _launchDelaySeconds;
 
     public LaunchPatternFactory launchPatternFactory;
@@ -30,7 +31,32 @@ public class BulletLauncher : MonoBehaviour
 
         _isLaunchReady = false;
         _launchPattern.GeneratePattern(_directions, direction, _bulletCount);
-        StartCoroutine(LaunchBulletsWithDelay());
+        if (_hasLaunchDelay)
+        {
+            StartCoroutine(LaunchBulletsWithDelay());
+        } else
+        {
+            LaunchBullets();
+        }
+    }
+
+    private void LaunchBullets()
+    {
+        foreach (Vector2 direction in _directions)
+        {
+            GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
+            Bullet bulletComponent = bulletInstance.GetComponent<Bullet>();
+            if (gameObject.layer == LayerMask.NameToLayer("Weapon"))
+            {
+                Weapon weaponComponent = GetComponent<Weapon>();
+                bulletComponent.Initialize(transform, direction, true, weaponComponent.GetDamage(PlayerManager.instance.power));
+            }
+            else
+            {
+                bulletComponent.Initialize(transform, direction, false, 0);
+            }
+        }
+        _isLaunchReady = true;
     }
 
     private IEnumerator LaunchBulletsWithDelay()
@@ -42,11 +68,11 @@ public class BulletLauncher : MonoBehaviour
             if (gameObject.layer == LayerMask.NameToLayer("Weapon"))
             {
                 Weapon weaponComponent = GetComponent<Weapon>();
-                bulletComponent.Initialize(transform.position, direction, true, weaponComponent.GetDamage(PlayerManager.instance.power));
+                bulletComponent.Initialize(transform, direction, true, weaponComponent.GetDamage(PlayerManager.instance.power));
             }
             else
             {
-                bulletComponent.Initialize(transform.position, direction, false, 0);
+                bulletComponent.Initialize(transform, direction, false, 0);
             }
 
             yield return new WaitForSeconds(_launchDelaySeconds);
