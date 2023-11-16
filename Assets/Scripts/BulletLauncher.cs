@@ -7,7 +7,7 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private List<GameObject> _bulletPrefabs;
     [SerializeField] private int _bulletCount;
 
-    [SerializeField] private bool _hasLaunchDelay;
+    [SerializeField] private bool _hasLaunchDelay = false;
     [SerializeField] private float _launchDelaySeconds;
 
     public LaunchPatternFactory launchPatternFactory;
@@ -19,6 +19,8 @@ public class BulletLauncher : MonoBehaviour
     private int _currentBulletIndex;
 
     private bool _isLaunchReady;
+
+    public List<Vector2> directions { get => _directions; }
 
     public bool isLaunchReady { get => _isLaunchReady; }
 
@@ -95,13 +97,15 @@ public class LaunchPatternFactory
     public enum LaunchPatternType
     {
         DirectLaunchPattern,
-        CircularLaunchPattern
+        CircularLaunchPattern,
+        RandomLaunchPattern
     }
     
     public LaunchPatternType Type = LaunchPatternType.DirectLaunchPattern;
 
     public DirectLaunchPattern DirectLaunchPattern = new DirectLaunchPattern();
     public CircularLaunchPattern CircularLaunchPattern = new CircularLaunchPattern();
+    public RandomLaunchPattern RandomLaunchPattern = new RandomLaunchPattern();
 
     public ILaunchPattern CreateLaunchPattern()
     {
@@ -121,6 +125,8 @@ public class LaunchPatternFactory
                 return DirectLaunchPattern;
             case LaunchPatternType.CircularLaunchPattern:
                 return CircularLaunchPattern;
+            case LaunchPatternType.RandomLaunchPattern:
+                return RandomLaunchPattern;
             default:
                 return DirectLaunchPattern;
         }

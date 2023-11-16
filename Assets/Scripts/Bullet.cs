@@ -17,13 +17,18 @@ public class Bullet : MonoBehaviour
 
     protected Transform _launcherTransform;
 
+    protected BulletLauncher _bulletLauncher;
+
     protected Vector2 _direction;
+
+    protected Vector2 _childDirection;
 
     protected bool _isPlayerBullet;
 
     protected float _damage;
 
-    private float _elapsedTimeSeconds;
+    protected float _elapsedTimeSeconds;
+
 
     public virtual void Initialize(Transform launcherTransform, Vector2 direction, bool isPlayerBullet, float damage)
     {
@@ -35,6 +40,7 @@ public class Bullet : MonoBehaviour
         _isPlayerBullet = isPlayerBullet;
         _damage = damage;
         _elapsedTimeSeconds = 0.0f;
+        _bulletLauncher = GetComponent<BulletLauncher>();
     }
 
     protected virtual void UpdateBulletTransform()
@@ -49,6 +55,7 @@ public class Bullet : MonoBehaviour
 
         if (_hasLifeTime && _elapsedTimeSeconds > _lifeTimeSeconds)
         {
+            GenerateBullet();
             Destroy(gameObject);
         }
 
@@ -62,13 +69,14 @@ public class Bullet : MonoBehaviour
         ApplyDamage(collision);
     } 
 
-    private void ApplyDamage(Collider2D collision) {
-        Debug.Log(collision.gameObject.layer);
+    protected virtual void ApplyDamage(Collider2D collision) {
         if (_isPlayerBullet && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             // collision.gameObject.GetComponent<Enemy>().GetDamaged(_damage);
             if (!_isPenetrative)
             {
+                _childDirection = Vector2.up;
+                GenerateBullet();
                 Destroy(gameObject);
             }
         }
@@ -80,5 +88,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    protected void GenerateBullet()
+    {
+        _bulletLauncher?.Launch(_childDirection);
     }
 }

@@ -55,3 +55,19 @@ public class CircularLaunchPattern : ILaunchPattern
         }
     }
 }
+
+[System.Serializable]
+public class RandomLaunchPattern : ILaunchPattern
+{
+    [SerializeField] float _range;
+
+    public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount)
+    {
+        directions.Clear();
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            directions.Add(direction + _range * Random.insideUnitCircle);
+        }
+    }
+}
