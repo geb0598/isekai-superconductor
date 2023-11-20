@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
         _curHp = this._stat.maxHp;
     }
 
-    public void GetDamaged(float damage)
+    public void TakeDamage(float damage)
     {
         _curHp -= damage;
 

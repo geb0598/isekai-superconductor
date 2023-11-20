@@ -35,7 +35,7 @@ public class BulletLauncherEditor : Editor
 
         LaunchPatternFactory launchPatternFactory = _bulletLauncher.launchPatternFactory;
         System.Type typeOfLaunchPattern = launchPatternFactory.GetClassType(launchPatternFactory.Type);
-        SerializedProperty specificLaunchPattern = (_serializedILaunchPattern.FindPropertyRelative(typeOfLaunchPattern.ToString()));
+        SerializedProperty specificLaunchPattern = _serializedILaunchPattern.FindPropertyRelative(typeOfLaunchPattern.ToString());
         string parentPath = specificLaunchPattern.propertyPath;
         while (specificLaunchPattern.NextVisible(true) && specificLaunchPattern.propertyPath.StartsWith(parentPath))
         {

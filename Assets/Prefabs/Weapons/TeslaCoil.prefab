@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5203405299000620634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8666528365161364284}
+  - component: {fileID: 8694732122658111077}
+  - component: {fileID: 5848944443627461945}
+  - component: {fileID: 3913846174719071013}
+  m_Layer: 0
+  m_Name: TeslaCoil
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8666528365161364284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203405299000620634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.4985056, y: 0.534319, z: 1.9226028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8694732122658111077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203405299000620634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88017a4cdd2137e41b61da2b0fdb6899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0
+  _levelLimit: 0
+  _defaultPower: 0
+  _powerScaleFactor: 0
+  _defaultAttackDelaySeconds: 3
+  _defaultAttackSpeed: 1
+  _attackSpeedScaleFactor: 0
+--- !u!114 &5848944443627461945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203405299000620634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 212407374056040056, guid: 5452f80bcb99534429f466a251a19aff, type: 3}
+  _bulletCount: 1
+  _launchDelaySeconds: 0
+  launchPatternFactory:
+    Type: 0
+    DirectLaunchPattern:
+      _precision: 0
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
+--- !u!114 &3913846174719071013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203405299000620634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b994715e1fe10a348bcbad230d5852d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finderFactory:
+    Type: 3
+    RangedFinder:
+      _range: 0
+    NearestFinder:
+      _range: 0
+      _targetCount: 0
+    RandomFinder:
+      _range: 10
+      _targetCount: 3
+    RandomPositionFinder:
+      _range: 0
+      _targetCount: 0
