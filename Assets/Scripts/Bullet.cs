@@ -10,29 +10,37 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private bool _isPenetrative = false;
 
+    [SerializeField] private bool _hasLifeTime;
     [SerializeField] private float _lifeTimeSeconds;
 
+    protected Rigidbody2D _rigidbody;
+
+    protected Transform _launcherTransform;
+
+    protected BulletLauncher _bulletLauncher;
+
     protected Vector2 _direction;
-    protected Vector2 _position;
 
-    private Rigidbody2D _rigidbody;
+    protected Vector2 _childDirection;
 
-    private bool _isPlayerBullet;
+    protected bool _isPlayerBullet;
 
-    private float _damage;
+    protected float _damage;
 
-    private float _elapsedTimeSeconds;
+    protected float _elapsedTimeSeconds;
 
-    public void Initialize(Vector2 position, Vector2 direction, bool isPlayerBullet, float damage)
+
+    public virtual void Initialize(Transform launcherTransform, Vector2 direction, bool isPlayerBullet, float damage)
     {
-        _position = position;
-        transform.position = _position;
+        _launcherTransform = launcherTransform;
+        _rigidbody = GetComponent<Rigidbody2D>();
+        transform.position = _launcherTransform.position;
         _direction = direction.normalized;
         transform.rotation = Quaternion.FromToRotation(Vector3.up, _direction);
-        _rigidbody = GetComponent<Rigidbody2D>();
         _isPlayerBullet = isPlayerBullet;
         _damage = damage;
         _elapsedTimeSeconds = 0.0f;
+        _bulletLauncher = GetComponent<BulletLauncher>();
     }
 
     protected virtual void UpdateBulletTransform()
@@ -45,8 +53,9 @@ public class Bullet : MonoBehaviour
     {
         _elapsedTimeSeconds += Time.deltaTime;
 
-        if (_elapsedTimeSeconds > _lifeTimeSeconds )
+        if (_hasLifeTime && _elapsedTimeSeconds > _lifeTimeSeconds)
         {
+            GenerateBullet();
             Destroy(gameObject);
         }
 
@@ -60,13 +69,14 @@ public class Bullet : MonoBehaviour
         ApplyDamage(collision);
     } 
 
-    private void ApplyDamage(Collider2D collision) {
-        Debug.Log(collision.gameObject.layer);
+    protected virtual void ApplyDamage(Collider2D collision) {
         if (_isPlayerBullet && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             // collision.gameObject.GetComponent<Enemy>().GetDamaged(_damage);
             if (!_isPenetrative)
             {
+                _childDirection = Vector2.up;
+                GenerateBullet();
                 Destroy(gameObject);
             }
         }
@@ -78,5 +88,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    protected void GenerateBullet()
+    {
+        _bulletLauncher?.Launch(_childDirection);
     }
 }
