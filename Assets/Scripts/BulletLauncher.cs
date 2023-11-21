@@ -7,55 +7,51 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private List<GameObject> _bulletPrefabs;
     [SerializeField] private int _bulletCount;
 
-    [SerializeField] private bool _hasLaunchDelay = false;
     [SerializeField] private float _launchDelaySeconds;
 
     public LaunchPatternFactory launchPatternFactory;
-
     private ILaunchPattern _launchPattern;
 
-    private List<Vector2> _directions;
-
-    private int _currentBulletIndex;
+    private List<Vector2> _targets;
 
     private bool _isLaunchReady;
 
-    public List<Vector2> directions { get => _directions; }
+    private int _currentBulletIndex;
 
     public bool isLaunchReady { get => _isLaunchReady; }
 
-    public void Launch(Vector2 direction)
+    public void Launch(Vector2 target)
     {
-        if (!_isLaunchReady)
-        {
-            return;
-        }
+        if (!_isLaunchReady) { return; }
 
         _isLaunchReady = false;
-        _launchPattern.GeneratePattern(_directions, direction, _bulletCount);
-        if (_hasLaunchDelay)
-        {
-            StartCoroutine(LaunchBulletsWithDelay());
-        } else
+        _launchPattern.GeneratePattern(transform, _targets, target, _bulletCount);
+        if (_launchDelaySeconds == 0)
         {
             LaunchBullets();
+        } 
+        else
+        {
+            StartCoroutine(LaunchBulletsWithDelay());
         }
+        _currentBulletIndex++;
+        _currentBulletIndex %= _bulletPrefabs.Count;
     }
 
     private void LaunchBullets()
     {
-        foreach (Vector2 direction in _directions)
+        foreach (Vector2 target in _targets)
         {
             GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
-            Bullet bulletComponent = bulletInstance.GetComponent<Bullet>();
-            if (gameObject.layer == LayerMask.NameToLayer("Weapon"))
+            Bullet bullet = bulletInstance.GetComponent<Bullet>();
+            if (gameObject.CompareTag("Weapon"))
             {
-                Weapon weaponComponent = GetComponent<Weapon>();
-                bulletComponent.Initialize(transform, direction, true, weaponComponent.GetDamage(PlayerManager.instance.power));
+                Weapon weapon = GetComponent<Weapon>();
+                bullet.Initialize(transform, target, true, weapon.GetDamage(PlayerManager.instance.power));
             }
             else
             {
-                bulletComponent.Initialize(transform, direction, false, 0);
+                bullet.Initialize(transform, target, false, 0);
             }
         }
         _isLaunchReady = true;
@@ -63,20 +59,19 @@ public class BulletLauncher : MonoBehaviour
 
     private IEnumerator LaunchBulletsWithDelay()
     {
-        foreach (Vector2 direction in _directions)
+        foreach (Vector2 target in _targets)
         {
             GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
-            Bullet bulletComponent = bulletInstance.GetComponent<Bullet>();
-            if (gameObject.layer == LayerMask.NameToLayer("Weapon"))
+            Bullet bullet = bulletInstance.GetComponent<Bullet>();
+            if (gameObject.CompareTag("Weapon"))
             {
-                Weapon weaponComponent = GetComponent<Weapon>();
-                bulletComponent.Initialize(transform, direction, true, weaponComponent.GetDamage(PlayerManager.instance.power));
+                Weapon weapon = GetComponent<Weapon>();
+                bullet.Initialize(transform, target, true, weapon.GetDamage(PlayerManager.instance.power));
             }
             else
             {
-                bulletComponent.Initialize(transform, direction, false, 0);
+                bullet.Initialize(transform, target, false, 0);
             }
-
             yield return new WaitForSeconds(_launchDelaySeconds);
         }
         _isLaunchReady = true;
@@ -85,9 +80,9 @@ public class BulletLauncher : MonoBehaviour
     private void Awake()
     {
         _launchPattern = launchPatternFactory.CreateLaunchPattern();
-        _directions = new List<Vector2>();
-        _currentBulletIndex = 0;
+        _targets = new List<Vector2>();
         _isLaunchReady = true;
+        _currentBulletIndex = 0;
     }
 }
 

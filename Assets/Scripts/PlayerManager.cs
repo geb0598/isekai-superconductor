@@ -4,35 +4,36 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerManager
+public class PlayerManager : MonoBehaviour
 {
     private static PlayerManager _instance;
 
-    public UnityEvent onPlayerDead;
-    public UnityEvent onPlayerInvincible;
+    [SerializeField] private int _maxHealthPointsLimit;
+    [SerializeField] private int _defaultHealthPoints;
+    [SerializeField] private int _healthPointsScaleFactor;
+
+    [SerializeField] private float _defaultPower;
+    [SerializeField] private float _powerScaleFactor;
+
+    [SerializeField] private int _levelLimit;
+
+    [SerializeField] private int _defaultExperiencePoints;
+    [SerializeField] private int _experiencePointsScaleFactor;
+
+    [SerializeField] private int _invincibleTimeSeconds;
 
     private int _healthPoints;
-    private int _maxHealthPointsLimit;
-    private int _defaultHealthPoints;
-    private int _healthPointsScaleFactor;
     private int _extraHealthPoints;
 
-    private float _defaultPower;
-    private float _powerScaleFactor;
-
     private int _level;
-    private int _levelLimit;
 
     private int _experiencePoints;
-    private int _defaultExperiencePoints;
-    private int _experiencePointsScaleFactor;
 
-    private int _invincibleFrames;
-    private bool _isInvincible = false;
+    private bool _isInvincible;
 
-    private bool _isDead = false;
+    private bool _isDead;
 
-    public static PlayerManager instance { get => _instance ?? (_instance = new PlayerManager()); }
+    public static PlayerManager instance { get => _instance; }
 
     public int healthPoints { get => _healthPoints; }
 
@@ -60,7 +61,7 @@ public class PlayerManager
 
         if (--_healthPoints > 0)
         {
-            OnPlayerInvincible();
+            StartCoroutine(OnPlayerInvincible());
         }
         else
         {
@@ -106,10 +107,28 @@ public class PlayerManager
 
     private void OnPlayerDead()
     {
-
+        _isDead = true;
     }
-    private void OnPlayerInvincible()
-    {
 
+    private IEnumerator OnPlayerInvincible()
+    {
+        _isInvincible = true;
+        yield return new WaitForSeconds(_invincibleTimeSeconds);
+        _isInvincible = false;
+    }
+
+    private void Start()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+
+        _healthPoints = _defaultHealthPoints;
+        _extraHealthPoints = 0;
+        _level = 1;
+        _experiencePoints = 0;
+        _isInvincible = false;
+        _isDead = false;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ILaunchPattern  
 {
-    public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount);
+    public void GeneratePattern(Transform launcher, List<Vector2> targets, Vector2 target, int bulletCount);
 }
 
 
@@ -14,15 +14,18 @@ public class DirectLaunchPattern : ILaunchPattern
     [Range(0.0f, 180.0f)]
     [SerializeField] private float _precision;
 
-    public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount)
+    public void GeneratePattern(Transform launcher, List<Vector2> targets, Vector2 target, int bulletCount)
     {
-        directions.Clear();
+        targets.Clear();
 
         for (int i = 0; i < bulletCount; i++)
         {
             float randomAngle = Random.Range(-_precision, _precision);
 
-            directions.Add(Quaternion.Euler(0.0f, 0.0f, randomAngle) * direction);
+            Vector2 direction = target - (Vector2)launcher.position;
+            direction = Quaternion.Euler(0, 0, randomAngle) * direction;
+
+            targets.Add((Vector2)launcher.position + direction);
         } 
     }
 }
@@ -32,9 +35,9 @@ public class CircularLaunchPattern : ILaunchPattern
 {
     [SerializeField] bool _isClockwise;
 
-    public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount)
+    public void GeneratePattern(Transform launcher, List<Vector2> targets, Vector2 target, int bulletCount)
     {
-        directions.Clear();
+        targets.Clear();
 
         float angle = 360.0f / bulletCount;
         float cumulativeAngle = 0.0f;
@@ -42,7 +45,11 @@ public class CircularLaunchPattern : ILaunchPattern
         for (int i = 0; i < bulletCount; i++)
         {
             Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, cumulativeAngle);
-            directions.Add(rotation * direction);
+
+            Vector2 direction = target - (Vector2)launcher.position;
+            direction = rotation * direction;
+
+            targets.Add((Vector2)launcher.position + direction);
 
             if (_isClockwise)
             {
@@ -61,7 +68,7 @@ public class RandomLaunchPattern : ILaunchPattern
 {
     [SerializeField] float _range;
 
-    public void GeneratePattern(List<Vector2> directions, Vector2 direction, int bulletCount)
+    public void GeneratePattern(Transform launcher, List<Vector2> directions, Vector2 direction, int bulletCount)
     {
         directions.Clear();
 

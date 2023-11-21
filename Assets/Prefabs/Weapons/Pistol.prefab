@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3244322749520524829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3244322749520525280}
+  - component: {fileID: 3244322749520524830}
+  - component: {fileID: 3244322749520524831}
+  - component: {fileID: 6046830095698454097}
+  m_Layer: 0
+  m_Name: Pistol
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3244322749520525280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244322749520524829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3244322749520524830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244322749520524829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae709fe777357448a113b18627c0cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 0
+  _levelLimit: 0
+  _defaultPower: 0
+  _powerScaleFactor: 0
+  _defaultAttackDelaySeconds: 2
+  _defaultAttackSpeed: 1
+  _attackSpeedScaleFactor: 0
+--- !u!114 &3244322749520524831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244322749520524829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 4027783587094365756, guid: d5aa151070900884997bdfd25f63ef14, type: 3}
+  _bulletCount: 3
+  _launchDelaySeconds: 0.2
+  launchPatternFactory:
+    Type: 0
+    DirectLaunchPattern:
+      _precision: 10
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
+--- !u!114 &6046830095698454097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244322749520524829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b994715e1fe10a348bcbad230d5852d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finderFactory:
+    Type: 2
+    RangedFinder:
+      _range: 0
+    NearestFinder:
+      _range: 10
+      _targetCount: 1
+    RandomFinder:
+      _range: 5
+      _targetCount: 3
+    RandomPositionFinder:
+      _range: 5
+      _targetCount: 3
