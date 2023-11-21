@@ -36,7 +36,7 @@ public class PlayerManager
 
     public int healthPoints { get => _healthPoints; }
 
-    public int maxHealthPoints { get => Mathf.Max(_defaultHealthPoints + level / _healthPointsScaleFactor + _extraHealthPoints, _maxHealthPointsLimit); }
+    public int maxHealthPoints { get => Mathf.Min(_defaultHealthPoints + level / _healthPointsScaleFactor + _extraHealthPoints, _maxHealthPointsLimit); }
 
     public float power { get => _defaultPower + _level * _powerScaleFactor; }
 
