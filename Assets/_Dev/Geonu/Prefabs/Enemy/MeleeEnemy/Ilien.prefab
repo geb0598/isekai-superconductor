@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965639106570944390}
   - component: {fileID: 965639106570944391}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5672347601109257158}
   - component: {fileID: 5672347601109257159}
   - component: {fileID: 5672347601109257153}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Ilien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965639107431365210}
   - component: {fileID: 965639107431365211}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

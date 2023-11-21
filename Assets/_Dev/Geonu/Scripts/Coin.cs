@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Coin : DropItem
 {
-    public int amount;
+    private int _amount;
 
     public void Init(int amount)
     {
-        this.amount = amount;
+        _amount = amount;
     }
 
     protected override void Get()
     {
         // playerManager GetCoin(amount) call
-        // GameManager.GetInstance().playerManager.GetCoin(amount);
+        // PlayerManager.instance.AddCoin();
+        GameManager.GetInstance().eventManager.playerGetCoinEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
     }
 }

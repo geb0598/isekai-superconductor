@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour
 
     private float _curHp;
 
+    private float _invincibleTimer;
+    private float _invincibleTime = 0.5f; // test init
+    private bool _isInvincible;
+
     private void Awake()
     {
         _target = GameManager.GetInstance().playerController.GetComponent<Rigidbody2D>();
@@ -28,6 +32,17 @@ public class Enemy : MonoBehaviour
         _waitForFixedUpdate = new WaitForFixedUpdate();
 
         _animator.SetBool("isMoving", true);
+    }
+
+    virtual protected void FixedUpdate()
+    {
+        if (_isInvincible)
+            _invincibleTimer += Time.fixedDeltaTime;
+
+        if (_invincibleTimer >= _invincibleTime) 
+        {
+            _isInvincible = false;
+        }
     }
 
     protected void Move()
@@ -83,12 +98,18 @@ public class Enemy : MonoBehaviour
         _curHp = this._stat.maxHp;
     }
 
-    public void GetDamaged(float damage)
+    public void TakeDamage(float damage)
     {
+        if (_isInvincible)
+            return;
+
         _curHp -= damage;
+        _isInvincible = true;
+        _invincibleTimer = 0f;
 
         if (_curHp > 0)
         {
+            ShowDamage(damage);
             StartCoroutine(KnockBack());
         }
 
@@ -102,6 +123,7 @@ public class Enemy : MonoBehaviour
     {
         _isLive = false;
         DropCoin();
+        GameManager.GetInstance().eventManager.enemyKilledEvent.Invoke();
         gameObject.SetActive(false);
     }
 
@@ -131,5 +153,13 @@ public class Enemy : MonoBehaviour
         Coin coin = GameManager.GetInstance().poolManager.Get(2, 0).GetComponent<Coin>();
         coin.transform.position = transform.position;
         coin.Init(Mathf.FloorToInt(amount * ratio));
+    }
+
+    private void ShowDamage(float damage)
+    {
+        if (!GameManager.GetInstance().isShowDamage)
+            return;
+        GameObject damageText = GameManager.GetInstance().poolManager.Get(2, 3);
+        damageText.GetComponent<DamageText>().Init(damage, transform);
     }
 }

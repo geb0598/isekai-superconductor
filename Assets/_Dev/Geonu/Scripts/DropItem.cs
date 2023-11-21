@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropItem : MonoBehaviour
+public abstract class DropItem : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
 
@@ -11,9 +11,7 @@ public class DropItem : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    virtual protected void Get()
-    {
-    }
+    abstract protected void Get();
 
     // HitBox Tag Collider  
     void OnTriggerEnter2D(Collider2D collision)

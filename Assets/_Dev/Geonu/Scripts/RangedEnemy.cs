@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+    private BulletLauncher _bulletLauncher;
+
     private float _defaultRange = 5f;
     private float _maxRange;
 
@@ -11,8 +13,10 @@ public class RangedEnemy : Enemy
 
     private float _timer;
 
-    private void FixedUpdate()
+    override protected void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (!_isLive)
             return;
 
@@ -34,7 +38,8 @@ public class RangedEnemy : Enemy
             _timer += Time.fixedDeltaTime;
             if (_timer >= _stat.attackSpeed)
             {
-                Shoot();
+                // Shoot();
+                _bulletLauncher.Launch(_target.position - _rigidbody2d.position);
                 _timer = 0f;
             }
 
@@ -62,8 +67,10 @@ public class RangedEnemy : Enemy
 
     private void OnEnable()
     {
+        _timer = 0f;
         _isLive = true;
         _isInRange = false;
+        _bulletLauncher = GetComponent<BulletLauncher>();
     }
 
     public override void Init()
