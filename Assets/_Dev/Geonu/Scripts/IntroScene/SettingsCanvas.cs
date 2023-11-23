@@ -12,15 +12,18 @@ public class SettingsCanvas : MonoBehaviour
     List<Resolution> resolutions = new List<Resolution>();
 
     [Header("Sound Options")]
-    public float volume; // ?
+    public Slider masterVolumeSlider;
+    public Slider backgroundVolumeSlider;
+    public Slider sfxVolumeSlider;
 
     [Header("Game Play Options")]
-    public bool isShowingDamage;
+    public Toggle ShowDamageToggle;
 
     private int _resolutionType;
 
-    private void Awake()
+    private void Start()
     {
+        // screen option initialize
         resolutions.AddRange(Screen.resolutions);
         resolutionDropdown.options.Clear();
 
@@ -33,7 +36,21 @@ public class SettingsCanvas : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         fullScreenToggle.isOn = Screen.fullScreenMode.Equals(FullScreenMode.FullScreenWindow) ? true : false;
+
+        // audio option initialize
+        masterVolumeSlider.value = GameManager.GetInstance().audioManager.masterVolume;
+        backgroundVolumeSlider.value = GameManager.GetInstance().audioManager.bgmVolume;
+        sfxVolumeSlider.value = GameManager.GetInstance().audioManager.sfxVolume;
+
+        // Game play option initialize
+        ShowDamageToggle.isOn = GameManager.GetInstance().isShowDamage;
     }
+
+    private void OnEnable()
+    {
+        Start();
+    }
+
 
     public void DropdownOptionChange(int selectedResolutionType)
     {

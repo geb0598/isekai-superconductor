@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        StopGame();
     }
 
     private GameManager() { }
@@ -47,5 +48,10 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void SetIsShowDamage(bool isShowDamage)
+    {
+        this.isShowDamage = isShowDamage;
     }
 }

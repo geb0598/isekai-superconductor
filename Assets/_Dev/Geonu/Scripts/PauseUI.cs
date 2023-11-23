@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PauseUI : MonoBehaviour
 {
-    public void OnPauseButtonClicked()
+    public void EnablePauseUI()
     {
         gameObject.SetActive(true);
     }
 
-    public void OnBackButtonClicked()
+    public void DisablePauseUI()
     {
         gameObject.SetActive(false);
     }

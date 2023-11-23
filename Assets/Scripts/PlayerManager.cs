@@ -117,7 +117,7 @@ public class PlayerManager : MonoBehaviour
         _isInvincible = false;
     }
 
-    private void Start()
+    private void Awake()
     {
         if (_instance == null)
         {

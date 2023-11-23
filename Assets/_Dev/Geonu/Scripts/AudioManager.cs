@@ -84,23 +84,23 @@ public class AudioManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        bgmPlayer.volume = volume * bgmPlayer.volume;
-        for (int i = 0; i < channels; i++)
-        {
-            sfxPlayers[i].volume = volume * sfxPlayers[i].volume;
-        }
+        masterVolume = volume;
+        SetBgmVolume(bgmVolume);
+        SetSfxVolume(sfxVolume);
     }
 
     public void SetBgmVolume(float volume)
     {
-        bgmPlayer.volume = volume * masterVolume;
+        bgmVolume = volume;
+        bgmPlayer.volume = bgmVolume * masterVolume;
     }
 
     public void SetSfxVolume(float volume)
     {
+        sfxVolume = volume;
         for (int i = 0; i < channels; i++)
         {
-            sfxPlayers[i].volume = volume * masterVolume;
+            sfxPlayers[i].volume = sfxVolume * masterVolume;
         }
     }
 }
