@@ -159,6 +159,8 @@ public class Enemy : MonoBehaviour
     {
         if (!GameManager.GetInstance().isShowDamage)
             return;
+        if (damage <= 0)
+            return;
         GameObject damageText = GameManager.GetInstance().poolManager.Get(2, 3);
         damageText.GetComponent<DamageText>().Init(damage, transform);
     }

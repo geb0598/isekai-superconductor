@@ -39,7 +39,7 @@ public class RangedEnemy : Enemy
             if (_timer >= _stat.attackSpeed)
             {
                 // Shoot();
-                _bulletLauncher.Launch(_target.position - _rigidbody2d.position);
+                _bulletLauncher.Launch(_target.position);
                 _timer = 0f;
             }
 

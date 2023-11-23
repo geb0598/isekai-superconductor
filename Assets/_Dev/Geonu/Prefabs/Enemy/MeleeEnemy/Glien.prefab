@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47337609612205002}
   - component: {fileID: 47337609612205005}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47337609783354144}
   - component: {fileID: 47337609783354147}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,9 +182,9 @@ GameObject:
   - component: {fileID: 8399845426425939219}
   - component: {fileID: 8399845426425939218}
   - component: {fileID: 8399845426425939220}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Glien
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

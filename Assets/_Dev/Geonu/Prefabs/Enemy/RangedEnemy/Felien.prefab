@@ -410,15 +410,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefabs:
-  - {fileID: 1416248783164413804, guid: 46db4d6a5751bb749a15d8b69ca481c1, type: 3}
-  _bulletCount: 1
-  _launchDelaySeconds: 1
+  - {fileID: 4027783587094365756, guid: ad8e3e27d5be7ac43a19ff46e161a62a, type: 3}
+  _bulletCount: 5
+  _launchDelaySeconds: 0.1
   launchPatternFactory:
     Type: 0
     DirectLaunchPattern:
       _precision: 0
     CircularLaunchPattern:
       _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
 --- !u!50 &6086692167771125493
 Rigidbody2D:
   serializedVersion: 4

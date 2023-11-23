@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563884767822239286}
   - component: {fileID: 8563884767822239287}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563884768540659628}
   - component: {fileID: 8563884768540659629}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,9 +182,9 @@ GameObject:
   - component: {fileID: 5001519291861360571}
   - component: {fileID: 5001519291861360570}
   - component: {fileID: 5001519291861360568}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Llien
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
