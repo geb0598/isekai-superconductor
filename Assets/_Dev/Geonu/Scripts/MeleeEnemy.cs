@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-    private void FixedUpdate()
+    private float timer; // test
+
+    override protected void FixedUpdate()
     {
+        base.FixedUpdate();
+
+        timer += Time.fixedDeltaTime; // test
+
         if (!_isLive)
             return;
 

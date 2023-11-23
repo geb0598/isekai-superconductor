@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
     {
         if (_isPlayerBullet && collision.gameObject.CompareTag("Enemy"))
         {
-            // collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
         }
         else if (!_isPlayerBullet && collision.gameObject.CompareTag("Player"))
         {
@@ -104,6 +104,9 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_launcher == null)
+            return;
+
         _elapsedTimeSeconds += Time.fixedDeltaTime;
 
         if (_lifeTimeSeconds != 0 && _elapsedTimeSeconds > _lifeTimeSeconds)
