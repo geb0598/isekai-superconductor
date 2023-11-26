@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3273162394449076217}
   - component: {fileID: 8294673386805204303}
+  - component: {fileID: -523565531909288014}
   - component: {fileID: 607927693933831617}
   - component: {fileID: 607927693933831616}
   - component: {fileID: 607927693933831622}
@@ -141,6 +142,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-523565531909288014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273162394449076216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 4027783587094365756, guid: d52e8f834852de547ac962423be81202, type: 3}
+  _bulletCount: 4
+  _launchDelaySeconds: 0.2
+  launchPatternFactory:
+    Type: 0
+    DirectLaunchPattern:
+      _precision: 3
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
 --- !u!50 &607927693933831617
 Rigidbody2D:
   serializedVersion: 4

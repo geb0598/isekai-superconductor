@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class Exp : DropItem
 {
-    public int amount;
+    private int _amount;
 
     public void Init(int amount)
     {
-        this.amount = amount;
+        _amount = amount;
+    }
+
+    protected override void Get()
+    {
+        // playerManager GetExp(amount) call
+        for (int i = 0; i < _amount; i++)
+            PlayerManager.instance.AddExperiencePoints();
+        GameManager.GetInstance().eventManager.playerGetExpEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
     }
 }
