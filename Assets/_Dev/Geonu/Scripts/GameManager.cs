@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public bool isShowDamage;
 
+    public int wave;
+
     private void Awake()
     {
         _instance = this;
