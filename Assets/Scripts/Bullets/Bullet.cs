@@ -116,11 +116,6 @@ public class Bullet : MonoBehaviour
 
         UpdateBulletTransform();
 
-        if (!_spriteRenderer.isVisible)
-        {
-            // Deactivate();
-        }
-
         _speed += _acceleration * Time.fixedDeltaTime;
         _speed = Mathf.Max(_speed, 0);
     }

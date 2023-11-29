@@ -9,6 +9,8 @@ TagManager:
   - Graze
   - Enemy
   - Weapon
+  - RightWing
+  - LeftWing
   layers:
   - Default
   - TransparentFX
@@ -54,4 +56,7 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 3566495639
+    locked: 0
+  - name: HitPoint
+    uniqueID: 630313223
     locked: 0
