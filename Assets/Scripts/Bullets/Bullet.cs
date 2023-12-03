@@ -5,14 +5,9 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    [SerializeField] protected float _speed;
-    [SerializeField] protected float _acceleration;
-
-    [SerializeField] protected float _damageCoefficient;
-
+    [SerializeField] protected GameObject _collisionEffect;
+    [SerializeField] protected GameObject _destroyEffect;
     [SerializeField] protected float _lifeTimeSeconds;
-
-    [SerializeField] private bool _isPenetrative;
 
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
@@ -20,20 +15,33 @@ public abstract class Bullet : MonoBehaviour
     protected TargetFinder _targetFinder;
 
     protected Transform _launcher;
-
+    protected Vector2 _target;
     protected bool _isPlayerBullet;
-
     protected float _damage;
 
     protected float _elapsedTimeSeconds;
 
-    public abstract void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage);
+    public Transform launcher { get => _launcher; }
+    public Vector2 target { get => _target; }
+    public bool isPlayerBullet { get => _isPlayerBullet; }
 
     protected abstract void UpdateBulletTransform();
 
+    public virtual void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage)
+    {
+        _launcher = launcher;
+        _target = target;
+        _isPlayerBullet = isPlayerBullet;
+        _damage = damage;
+        _elapsedTimeSeconds = 0.0f;
+    }
+
     public void Deactivate()
     {
-        // Pooling required
+        if (_destroyEffect != null)
+        {
+            Instantiate(_destroyEffect, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 
@@ -49,7 +57,7 @@ public abstract class Bullet : MonoBehaviour
         }
     }
 
-    private IEnumerator GenerateBullets()
+    protected IEnumerator GenerateBullets()
     {
         if (_targetFinder != null)
         {
@@ -65,7 +73,7 @@ public abstract class Bullet : MonoBehaviour
         Deactivate();
     }
 
-    private IEnumerator GenerateBullets(Collider2D collision)
+    protected IEnumerator GenerateBullets(Collider2D collision)
     {
         if (_targetFinder != null)
         {
@@ -91,9 +99,6 @@ public abstract class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_launcher == null)
-            return;
-
         _elapsedTimeSeconds += Time.fixedDeltaTime;
 
         if (_lifeTimeSeconds != 0 && _elapsedTimeSeconds > _lifeTimeSeconds)
@@ -102,18 +107,5 @@ public abstract class Bullet : MonoBehaviour
         }
 
         UpdateBulletTransform();
-
-        _speed += _acceleration * Time.fixedDeltaTime;
-        _speed = Mathf.Max(_speed, 0);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ApplyDamage(collision);
-
-        if (!_isPenetrative && collision.gameObject.CompareTag("Enemy"))
-        {
-            StartCoroutine(GenerateBullets(collision));
-        }
-    } 
 }

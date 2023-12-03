@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSpeedBullet : Bullet
+public class RandomSpeedBullet : DirectBullet
 {
     public float _defaultSpeed;
 
