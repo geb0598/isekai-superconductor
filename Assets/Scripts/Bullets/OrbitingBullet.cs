@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbitingBullet : Bullet
+public class OrbitingBullet : DirectBullet
 {
     [SerializeField] float _radius;
     [SerializeField] bool _isClockwise;
@@ -10,13 +10,12 @@ public class OrbitingBullet : Bullet
 
     public override void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage)
     {
-        _launcher = launcher;
-        _rigidbody = GetComponent<Rigidbody2D>();
+        base.Initialize(launcher, target, isPlayerBullet, damage);
+
         _direction = (target - (Vector2)launcher.position).normalized;
-        _isPlayerBullet = isPlayerBullet;
-        _damage = damage;
 
         transform.position = _launcher.position + _radius * (Vector3)_direction;
+        transform.rotation = Quaternion.identity;
     }
 
     protected override void UpdateBulletTransform()

@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 212407374056040059}
   - component: {fileID: 212407374056040058}
   - component: {fileID: -721692245509615003}
+  - component: {fileID: 2943779904915052694}
+  - component: {fileID: 201243667400222834}
   m_Layer: 0
-  m_Name: Bullet_LightningBolt_1
+  m_Name: Bullet_LightningBolt_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +90,55 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
   _lifeTimeSeconds: 0.2
+--- !u!114 &2943779904915052694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212407374056040056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b994715e1fe10a348bcbad230d5852d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finderFactory:
+    Type: 2
+    RangedFinder:
+      _range: 0
+    NearestFinder:
+      _range: 10
+      _targetCount: 3
+    RandomFinder:
+      _range: 0
+      _targetCount: 0
+    RandomPositionFinder:
+      _range: 0
+      _targetCount: 0
+--- !u!114 &201243667400222834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212407374056040056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 6482089908630078917, guid: 9fdb52a8986d3b14dbbe885ed268a393, type: 3}
+  _bulletCount: 1
+  _launchDelaySeconds: 0
+  launchPatternFactory:
+    Type: 0
+    DirectLaunchPattern:
+      _precision: 0
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
 --- !u!1 &599302960948814573
 GameObject:
   m_ObjectHideFlags: 0

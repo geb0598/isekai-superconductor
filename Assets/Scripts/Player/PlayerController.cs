@@ -60,6 +60,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnActiveWeapon(InputValue inputValue)
+    {
+        StartCoroutine(WeaponManager.instance.activeWeapon.Attack());
+    }
+
     private void FocusPressed()
     {
         _focus = true;
