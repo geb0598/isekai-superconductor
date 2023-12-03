@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
     [SerializeField] protected float _speed;
     [SerializeField] protected float _acceleration;
+
+    [SerializeField] protected float _damageCoefficient;
 
     [SerializeField] protected float _lifeTimeSeconds;
 
@@ -19,42 +21,27 @@ public class Bullet : MonoBehaviour
 
     protected Transform _launcher;
 
-    protected Vector2 _direction;
-
     protected bool _isPlayerBullet;
 
     protected float _damage;
 
     protected float _elapsedTimeSeconds;
-   
-    public virtual void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage)
-    {
-        _launcher = launcher;
-        _direction = (target - (Vector2)_launcher.transform.position).normalized;
-        _isPlayerBullet = isPlayerBullet;
-        _damage = damage;
-        _elapsedTimeSeconds = 0.0f;
 
-        transform.position = _launcher.position;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, _direction);
-    }
+    public abstract void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage);
+
+    protected abstract void UpdateBulletTransform();
 
     public void Deactivate()
     {
+        // Pooling required
         Destroy(gameObject);
-    }
-
-    protected virtual void UpdateBulletTransform()
-    {
-        Vector2 movementVector = _direction * _speed * Time.fixedDeltaTime;
-        _rigidbody.MovePosition(_rigidbody.position + movementVector);
     }
 
     protected void ApplyDamage(Collider2D collision)
     {
         if (_isPlayerBullet && collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage * _damageCoefficient);
         }
         else if (!_isPlayerBullet && collision.gameObject.CompareTag("Player"))
         {
