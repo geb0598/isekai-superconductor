@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 6131072697819224026}
   - component: {fileID: 41036425626919102}
   - component: {fileID: 6285210255098401548}
+  - component: {fileID: 49775414423199169}
+  - component: {fileID: -4487928526151395099}
   m_Layer: 0
-  m_Name: Bullet_Pistol_1
+  m_Name: Bullet_Pistol_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,6 +91,55 @@ MonoBehaviour:
   _lifeTimeSeconds: 10
   _speed: 15
   _isPenetrative: 0
+--- !u!114 &49775414423199169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027783587094365756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b994715e1fe10a348bcbad230d5852d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finderFactory:
+    Type: 4
+    RangedFinder:
+      _range: 0
+    NearestFinder:
+      _range: 0
+      _targetCount: 0
+    RandomFinder:
+      _range: 0
+      _targetCount: 0
+    RandomPositionFinder:
+      _range: 10
+      _targetCount: 1
+--- !u!114 &-4487928526151395099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027783587094365756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefabs:
+  - {fileID: 4027783587094365756, guid: 7058bad1327bb2d488951f112f2dda24, type: 3}
+  _bulletCount: 5
+  _launchDelaySeconds: 0
+  launchPatternFactory:
+    Type: 1
+    DirectLaunchPattern:
+      _precision: 0
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0
 --- !u!1 &8588262972790874144
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: -728471657
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 230e91e53ab999c4098e0699fff1ac40, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a3983db3d9d2ae48811746762da4bfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -49,7 +49,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (_isPlayerBullet && collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage * _damageCoefficient);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
         }
         else if (!_isPlayerBullet && collision.gameObject.CompareTag("Player"))
         {

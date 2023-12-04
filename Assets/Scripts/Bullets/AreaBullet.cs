@@ -16,14 +16,6 @@ public class AreaBullet : Bullet
         return;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            StartCoroutine(GenerateBullets(collision));
-        }
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         ApplyDamage(collision);

@@ -67,7 +67,7 @@ MonoBehaviour:
   _bulletPrefabs:
   - {fileID: 8788560352563792643, guid: 33b8296e4d9ccff448b4a8b728b902a3, type: 3}
   _bulletCount: 1
-  _launchDelaySeconds: 0
+  _launchDelaySeconds: 10
   launchPatternFactory:
     Type: 0
     DirectLaunchPattern:
