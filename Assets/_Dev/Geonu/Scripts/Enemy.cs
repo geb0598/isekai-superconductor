@@ -107,9 +107,10 @@ public class Enemy : MonoBehaviour
         _isInvincible = true;
         _invincibleTimer = 0f;
 
+        ShowDamage(damage);
+
         if (_curHp > 0)
         {
-            ShowDamage(damage);
             StartCoroutine(KnockBack());
         }
 

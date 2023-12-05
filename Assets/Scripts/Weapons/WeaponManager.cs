@@ -14,7 +14,7 @@ public class WeaponManager : MonoBehaviour
     private List<Weapon> _weapons;
     private List<Weapon> _activeWeapons;
 
-    private int selectedActiveWeaponId = 0;
+    public int selectedActiveWeaponId = 0;
 
     public static WeaponManager instance { get => _instance; }
 
@@ -34,9 +34,19 @@ public class WeaponManager : MonoBehaviour
         return _weapons[id];
     }
 
+    public Weapon GetActiveWeapon(int id)
+    {
+        return _activeWeapons[id];
+    }
+
     public void ActivateWeapon(int id)
     {
         _weaponPrefabs[id].SetActive(true);
+    }
+
+    public void ActivateActiveWeapon()
+    {
+        _activeWeaponPrefabs[selectedActiveWeaponId].SetActive(true);
     }
 
     public void SelectActiveWeapon(int id)
