@@ -7,7 +7,6 @@ public interface ILaunchPattern
     public void GeneratePattern(Transform launcher, List<Vector2> targets, Vector2 target, int bulletCount);
 }
 
-
 [System.Serializable]
 public class DirectLaunchPattern : ILaunchPattern
 {
