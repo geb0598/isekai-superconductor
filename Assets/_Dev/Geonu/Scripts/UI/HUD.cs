@@ -35,7 +35,7 @@ public class HUD : MonoBehaviour
         levelText.text = string.Format("Lv.{0}", _levelCount);
 
         // not yet implemented
-        // activeWeaponImage.sprite = Resources.Load<Sprite>("\ActiveItem" + WeaponManager.instance.GetWeapon(id).name);
+        // activeWeaponImage.sprite = Resources.Load<Sprite>("/ActiveItem" + WeaponManager.instance.GetWeapon(id).name);
 
         UpdateLevel(PlayerManager.instance.experiencePoints, PlayerManager.instance.experiencePointsRequired);
     }
@@ -47,13 +47,13 @@ public class HUD : MonoBehaviour
         GameObject slotPrefab;
         GameObject slot;
 
-        string equipName = PauseUI.GetEquipmentName(type, id);
-
         switch (type)
         {            
-            // weapon
+            // weapon(0) or activeWeapon(2)
             case 0:
-                resourceName = "Weapon/" + equipName + "Slot";
+            case 2:
+                string weaponName = WeaponManager.instance.GetWeapon(id).name;
+                resourceName = "Weapon/" + weaponName + "Slot";
                 slotPrefab = Resources.Load<GameObject>(resourceName);
                 slot = Instantiate(slotPrefab);
                 slot.transform.SetParent(weaponSlot.transform);
@@ -61,7 +61,8 @@ public class HUD : MonoBehaviour
 
             // accessory
             case 1:
-                resourceName = "Accessory/" + equipName + "Slot";
+                string accessoryName = "";
+                resourceName = "Accessory/" + accessoryName + "Slot";
                 slotPrefab = Resources.Load<GameObject>(resourceName);
                 slot = Instantiate(slotPrefab);
                 slot.transform.SetParent(accessorySlot.transform);

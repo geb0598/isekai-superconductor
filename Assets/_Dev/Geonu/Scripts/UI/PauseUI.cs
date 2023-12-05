@@ -46,7 +46,7 @@ public class PauseUI : MonoBehaviour
         GameObject slotPrefab;
         GameObject slot;
 
-        string weaponName = GetEquipmentName(type, id);
+        string weaponName = WeaponManager.instance.GetWeapon(id).name;
 
         string resourceName = "Weapon/" + weaponName + "Slot";
         slotPrefab = Resources.Load<GameObject>(resourceName);
@@ -78,27 +78,6 @@ public class PauseUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // WeaponManager.instance.GetWeapon(id)
-    public static string GetEquipmentName(int type, int id)
-    {
-        string equipmentName = "";
-        if (type == 0 || type == 2) // weapon or active weapon
-        {
-            // equipmentName = WeaponManager.instance.GetWeapon(id).name;
-        }
-        else if (type == 1) // Accessory
-        {
-            switch (id)
-            {
-                case 0:
-                    equipmentName = "Accessory";
-                    break;
-
-            }
-        }
-
-        return equipmentName;
-    }
 }
 
 

@@ -1679,7 +1679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &138278265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1960,68 +1960,8 @@ MonoBehaviour:
   levelText: {fileID: 1534414273}
   powerText: {fileID: 1930300756}
   weaponSlot: {fileID: 1157659187}
-  weaponLevels:
-  - {fileID: 733599491}
-  - {fileID: 2135588686}
-  - {fileID: 143206484}
-  - {fileID: 1123159573}
-  - {fileID: 518956483}
-  - {fileID: 1499556121}
-  weaponLevelsImage:
-  - MiniLevel:
-    - {fileID: 1102618000}
-    - {fileID: 408653474}
-    - {fileID: 146033081}
-    - {fileID: 1935880469}
-    - {fileID: 254460449}
-    - {fileID: 599157034}
-    - {fileID: 494721540}
-    - {fileID: 487335744}
-  - MiniLevel:
-    - {fileID: 672324819}
-    - {fileID: 608474773}
-    - {fileID: 993731564}
-    - {fileID: 1195514278}
-    - {fileID: 1878815952}
-    - {fileID: 779494110}
-    - {fileID: 897134467}
-    - {fileID: 56983157}
-  - MiniLevel:
-    - {fileID: 1143728127}
-    - {fileID: 942789479}
-    - {fileID: 400785544}
-    - {fileID: 2095448327}
-    - {fileID: 1007160781}
-    - {fileID: 1851274421}
-    - {fileID: 598284545}
-    - {fileID: 1325528556}
-  - MiniLevel:
-    - {fileID: 652049455}
-    - {fileID: 2021820631}
-    - {fileID: 378760622}
-    - {fileID: 1243991520}
-    - {fileID: 1431398932}
-    - {fileID: 1048187045}
-    - {fileID: 1999989751}
-    - {fileID: 1230689842}
-  - MiniLevel:
-    - {fileID: 173566917}
-    - {fileID: 1941552397}
-    - {fileID: 70937391}
-    - {fileID: 1254870328}
-    - {fileID: 14625009}
-    - {fileID: 1386527237}
-    - {fileID: 582844500}
-    - {fileID: 1103193067}
-  - MiniLevel:
-    - {fileID: 1779650371}
-    - {fileID: 100457577}
-    - {fileID: 548868583}
-    - {fileID: 68614882}
-    - {fileID: 152884124}
-    - {fileID: 940818357}
-    - {fileID: 900867819}
-    - {fileID: 1241026536}
+  weaponLevels: []
+  weaponLevelsImage: []
 --- !u!114 &148634063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,10 +2210,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -225}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174363872
 MonoBehaviour:
@@ -2388,7 +2328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &195336993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3525,10 +3465,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -75}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349556859
 MonoBehaviour:
@@ -5608,10 +5548,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -225}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566842187
 MonoBehaviour:
@@ -7353,7 +7293,7 @@ MonoBehaviour:
   killText: {fileID: 1124298212}
   coinText: {fileID: 1749069302}
   levelText: {fileID: 629570749}
-  activeWeaponImage: {fileID: 1052665512}
+  activeWeaponImage: {fileID: 0}
   weaponSlot: {fileID: 1145523834}
   accessorySlot: {fileID: 363581078}
 --- !u!114 &742895111
@@ -9520,7 +9460,7 @@ Transform:
   - {fileID: 2078790576}
   - {fileID: 1870908100}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940818355
 GameObject:
@@ -10533,10 +10473,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 525, y: -75}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034426731
 MonoBehaviour:
@@ -12837,10 +12777,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -225}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172636330
 MonoBehaviour:
@@ -17337,10 +17277,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -75}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604844011
 MonoBehaviour:
@@ -17386,9 +17326,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 195336994}
-        m_TargetAssemblyTypeName: GameStartCanvas, Assembly-CSharp
-        m_MethodName: SetActiveItemID
+      - m_Target: {fileID: 1790265551}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: SelectActiveWeapon
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17623,10 +17563,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -75}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1607772254
 MonoBehaviour:
@@ -17672,9 +17612,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 195336994}
-        m_TargetAssemblyTypeName: GameStartCanvas, Assembly-CSharp
-        m_MethodName: SetActiveItemID
+      - m_Target: {fileID: 1790265551}
+        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
+        m_MethodName: SelectActiveWeapon
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19250,6 +19190,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &1790265550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790265552}
+  - component: {fileID: 1790265551}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1790265551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790265550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65e2ba27955144409ba306ca27902da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponPrefabs:
+  - {fileID: 448081398733586140, guid: 58867e612c5e5bb4895be9d03de3b7f7, type: 3}
+  - {fileID: 1229694597218356168, guid: b685c7d9657c33646bb165ff5003623e, type: 3}
+  - {fileID: 3244322749520524829, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+  - {fileID: 5203405299000620634, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
+  _activeWeaponPrefabs:
+  - {fileID: 3917900052172732962, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
+  - {fileID: 4932982519140767269, guid: c23e3fa4eff69d3439afb3d7895a8103, type: 3}
+--- !u!4 &1790265552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790265550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 557.35504, y: 269.61115, z: -4.427802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790310191
 GameObject:
   m_ObjectHideFlags: 0
@@ -19856,10 +19848,10 @@ RectTransform:
   m_Father: {fileID: 694824919}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 525, y: -225}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853259754
 MonoBehaviour:
