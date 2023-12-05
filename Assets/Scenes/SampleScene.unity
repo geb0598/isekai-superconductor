@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14083880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3917900052172732962, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
+  m_PrefabInstance: {fileID: 140287387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &14083883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5374339653359048470, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
@@ -649,7 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponPrefabs: []
   _activeWeaponPrefabs:
-  - {fileID: 1211490894}
+  - {fileID: 14083880}
 --- !u!4 &504811544
 Transform:
   m_ObjectHideFlags: 0
@@ -816,11 +821,6 @@ CircleCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3244322749520525280, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
   m_PrefabInstance: {fileID: 3244322748786549472}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1211490894 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4932982519140767269, guid: c23e3fa4eff69d3439afb3d7895a8103, type: 3}
-  m_PrefabInstance: {fileID: 2270782759475567303}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1211490895 stripped
 Transform:
