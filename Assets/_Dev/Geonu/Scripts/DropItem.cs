@@ -11,26 +11,5 @@ public abstract class DropItem : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    abstract protected void Get();
-
-    // HitBox Tag Collider  
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("HitBox"))
-        {
-            Get();
-            gameObject.SetActive(false);
-        }
-    }
-
-    // ItemGetter Tag Collider
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ItemGetter"))
-        {
-            // Move to Player
-            Vector2 dirVec = (collision.transform.position - transform.position).normalized;
-            _rigidbody2D.MovePosition(_rigidbody2D.position + dirVec * 0.1f);
-        }
-    }
+    abstract public void Get();
 }

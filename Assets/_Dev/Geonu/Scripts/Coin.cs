@@ -11,10 +11,10 @@ public class Coin : DropItem
         _amount = amount;
     }
 
-    protected override void Get()
+    public override void Get()
     {
-        // playerManager GetCoin(amount) call
-        // PlayerManager.instance.AddCoin();
+        PlayerManager.instance.AddCoin(_amount); 
+        gameObject.SetActive(false);
         GameManager.GetInstance().eventManager.playerGetCoinEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
     }
 }

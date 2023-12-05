@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class HitPoint : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerManager.instance.TakeDamage();
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            PlayerManager.instance.TakeDamage();
+        }
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Debug.Log("Get!");
+            collision.gameObject.GetComponent<DropItem>().Get();
+        }
     }
 }

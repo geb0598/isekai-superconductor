@@ -11,11 +11,11 @@ public class Exp : DropItem
         _amount = amount;
     }
 
-    protected override void Get()
+    public override void Get()
     {
-        // playerManager GetExp(amount) call
         for (int i = 0; i < _amount; i++)
             PlayerManager.instance.AddExperiencePoints();
+        gameObject.SetActive(false);
         GameManager.GetInstance().eventManager.playerGetExpEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
     }
 }
