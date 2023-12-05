@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameStartCanvas : MonoBehaviour
 {
-    public int activeItemType;
+    public int activeItemID; // WeaponManager에서 관리
 
     public void GameStart()
     {
+        // gameStartEvent<int> Invoke -> gameStartEvent: ActiveItem Activate, ...
         SceneManager.LoadScene("GeonuSampleScene", LoadSceneMode.Single);
     }
 
-    public void SetActiveItemType(int type)
+    // WeaponManager에서
+    public void SetActiveItemID(int id)
     {
-        activeItemType = type;
+        activeItemID = id;
     }
 
     public void EnableGameStartCanvas()

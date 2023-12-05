@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public int wave;
 
+    [Header("HUD")]
+    public int killCount;
+
     private void Awake()
     {
         _instance = this;
