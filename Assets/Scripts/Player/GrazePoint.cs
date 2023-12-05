@@ -21,7 +21,7 @@ public class GrazePoint : MonoBehaviour
         Vector2 direction = Random.insideUnitCircle.normalized;
         Vector2 position = (Vector2)transform.position + length * direction;
 
-        Exp exp = GameManager.GetInstance().poolManager.GetComponent<Exp>();
+        Exp exp = GameManager.GetInstance().poolManager.Get(2, 2).GetComponent<Exp>();
         exp.transform.position = position;
         exp.Init(1);
     }
