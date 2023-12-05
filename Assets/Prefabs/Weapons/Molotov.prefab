@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c124f658d326a4c47b99796c672afb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
-  _levelLimit: 0
-  _defaultPower: 0
-  _powerScaleFactor: 0
+  id: 2
+  _levelLimit: 8
+  _defaultPower: 3
+  _powerScaleFactor: 3
   _defaultAttackDelaySeconds: 5
   _defaultAttackSpeed: 1
   _attackSpeedScaleFactor: 0

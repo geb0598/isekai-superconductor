@@ -1960,68 +1960,8 @@ MonoBehaviour:
   levelText: {fileID: 1534414273}
   powerText: {fileID: 1930300756}
   weaponSlot: {fileID: 1157659187}
-  weaponLevels:
-  - {fileID: 733599491}
-  - {fileID: 2135588686}
-  - {fileID: 143206484}
-  - {fileID: 1123159573}
-  - {fileID: 518956483}
-  - {fileID: 1499556121}
-  weaponLevelsImage:
-  - MiniLevel:
-    - {fileID: 1102618000}
-    - {fileID: 408653474}
-    - {fileID: 146033081}
-    - {fileID: 1935880469}
-    - {fileID: 254460449}
-    - {fileID: 599157034}
-    - {fileID: 494721540}
-    - {fileID: 487335744}
-  - MiniLevel:
-    - {fileID: 672324819}
-    - {fileID: 608474773}
-    - {fileID: 993731564}
-    - {fileID: 1195514278}
-    - {fileID: 1878815952}
-    - {fileID: 779494110}
-    - {fileID: 897134467}
-    - {fileID: 56983157}
-  - MiniLevel:
-    - {fileID: 1143728127}
-    - {fileID: 942789479}
-    - {fileID: 400785544}
-    - {fileID: 2095448327}
-    - {fileID: 1007160781}
-    - {fileID: 1851274421}
-    - {fileID: 598284545}
-    - {fileID: 1325528556}
-  - MiniLevel:
-    - {fileID: 652049455}
-    - {fileID: 2021820631}
-    - {fileID: 378760622}
-    - {fileID: 1243991520}
-    - {fileID: 1431398932}
-    - {fileID: 1048187045}
-    - {fileID: 1999989751}
-    - {fileID: 1230689842}
-  - MiniLevel:
-    - {fileID: 173566917}
-    - {fileID: 1941552397}
-    - {fileID: 70937391}
-    - {fileID: 1254870328}
-    - {fileID: 14625009}
-    - {fileID: 1386527237}
-    - {fileID: 582844500}
-    - {fileID: 1103193067}
-  - MiniLevel:
-    - {fileID: 1779650371}
-    - {fileID: 100457577}
-    - {fileID: 548868583}
-    - {fileID: 68614882}
-    - {fileID: 152884124}
-    - {fileID: 940818357}
-    - {fileID: 900867819}
-    - {fileID: 1241026536}
+  weaponLevels: []
+  weaponLevelsImage: []
 --- !u!114 &148634063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7353,7 +7293,7 @@ MonoBehaviour:
   killText: {fileID: 1124298212}
   coinText: {fileID: 1749069302}
   levelText: {fileID: 629570749}
-  activeWeaponImage: {fileID: 1052665512}
+  activeWeaponImage: {fileID: 0}
   weaponSlot: {fileID: 1145523834}
   accessorySlot: {fileID: 363581078}
 --- !u!114 &742895111
