@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  _levelLimit: 0
-  _defaultPower: 0
-  _powerScaleFactor: 0
-  _defaultAttackDelaySeconds: 10
+  _levelLimit: 8
+  _defaultPower: 5000
+  _powerScaleFactor: 1
+  _defaultAttackDelaySeconds: 15
   _defaultAttackSpeed: 1
   _attackSpeedScaleFactor: 0
 --- !u!114 &1930545183646905205
