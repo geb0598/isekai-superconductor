@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SineBullet : Bullet
+public class SineBullet : DirectBullet
 {
     public float amplitude = 1;
     public float frequency = 1;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2334181294937032466}
   - component: {fileID: 6131072697819224026}
   - component: {fileID: 41036425626919102}
-  - component: {fileID: 2208535085444230268}
+  - component: {fileID: 6285210255098401548}
   m_Layer: 0
   m_Name: Bullet_Pistol_1
   m_TagString: Untagged
@@ -72,7 +72,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.1, y: 0.5}
   m_Direction: 0
---- !u!114 &2208535085444230268
+--- !u!114 &6285210255098401548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,12 +81,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4027783587094365756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460acae1061d6d94ca8fe98ad2d74d89, type: 3}
+  m_Script: {fileID: 11500000, guid: 83ac9422aad65dc46a0ce7e480f8fdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _acceleration: 0
-  _lifeTimeSeconds: 5
+  _collisionEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  _destroyEffect: {fileID: 0}
+  _lifeTimeSeconds: 10
+  _speed: 15
   _isPenetrative: 0
 --- !u!1 &8588262972790874144
 GameObject:
