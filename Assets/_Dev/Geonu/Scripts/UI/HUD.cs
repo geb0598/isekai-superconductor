@@ -35,8 +35,8 @@ public class HUD : MonoBehaviour
         levelText.text = string.Format("Lv.{0}", _levelCount);
 
         // not yet implemented
-        // activeWeaponImage.sprite = Resources.Load<Sprite>("/ActiveItem" + WeaponManager.instance.GetWeapon(id).name);
-
+        string weaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
+        activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + weaponName).GetComponent<SpriteRenderer>().sprite;
         UpdateLevel(PlayerManager.instance.experiencePoints, PlayerManager.instance.experiencePointsRequired);
     }
 
