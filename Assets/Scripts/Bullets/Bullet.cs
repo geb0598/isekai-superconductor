@@ -19,6 +19,7 @@ public abstract class Bullet : MonoBehaviour
     protected bool _isPlayerBullet;
     protected float _damage;
 
+    protected bool _isGenerating;
     protected float _elapsedTimeSeconds;
 
     public Transform launcher { get => _launcher; }
@@ -33,6 +34,7 @@ public abstract class Bullet : MonoBehaviour
         _target = target;
         _isPlayerBullet = isPlayerBullet;
         _damage = damage;
+        _isGenerating = false;
         _elapsedTimeSeconds = 0.0f;
     }
 
@@ -59,6 +61,7 @@ public abstract class Bullet : MonoBehaviour
 
     protected IEnumerator GenerateBullets()
     {
+        _isGenerating = true;
         if (_targetFinder != null)
         {
             List<GameObject> filteringObjects = new List<GameObject>();
@@ -75,6 +78,7 @@ public abstract class Bullet : MonoBehaviour
 
     protected IEnumerator GenerateBullets(Collider2D collision)
     {
+        _isGenerating = true;
         if (_targetFinder != null)
         {
             List<GameObject> filteringObjects = new List<GameObject>() { collision.gameObject };

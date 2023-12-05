@@ -29,6 +29,11 @@ public class DirectBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isGenerating)
+        {
+            return;
+        }
+
         if (_collisionEffect != null && collision.gameObject.CompareTag("Enemy"))
         {
             Instantiate(_collisionEffect, collision.transform.position, Quaternion.identity);

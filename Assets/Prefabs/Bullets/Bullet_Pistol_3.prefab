@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefabs:
   - {fileID: 4027783587094365756, guid: 7058bad1327bb2d488951f112f2dda24, type: 3}
-  _bulletCount: 5
+  _bulletCount: 10
   _launchDelaySeconds: 0
   launchPatternFactory:
     Type: 1

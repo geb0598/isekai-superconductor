@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class AreaBullet : Bullet
 {
+    [SerializeField] private bool _isFollowingLauncher;
     public override void Initialize(Transform launcher, Vector2 target, bool isPlayerBullet, float damage)
     {
         base.Initialize(launcher, target, isPlayerBullet, damage);
 
-        transform.position = target;
+        if (_isFollowingLauncher)
+        {
+            transform.SetParent(launcher);
+            transform.position = target;
+        } 
+        else
+        {
+            transform.position = target;
+        }
     }
 
     protected override void UpdateBulletTransform()

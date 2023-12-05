@@ -28,4 +28,25 @@ public class OrbitingBullet : DirectBullet
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_isGenerating)
+        {
+            return;
+        }
+
+        if (_collisionEffect != null && collision.gameObject.CompareTag("Enemy"))
+        {
+            Instantiate(_collisionEffect, collision.transform.position, Quaternion.identity);
+        }
+
+        ApplyDamage(collision);
+
+        if (!_isPenetrative && collision.gameObject.CompareTag("Enemy"))
+        {
+            _isGenerating = true;   
+            StartCoroutine(GenerateBullets(collision));
+        }
+    }
 }

@@ -5427,7 +5427,7 @@ PrefabInstance:
     - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
       propertyPath: _bulletPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 4027783587094365756, guid: c5c901bb37c39ee43b1693acd0a4f0e4, type: 3}
+      objectReference: {fileID: 4027783587094365756, guid: 2f1f2f9fd3bd9cf43b00c874f96e1b49, type: 3}
     - target: {fileID: 3244322749520525280, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -14338,11 +14338,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598234939}
   m_CullTransparentMesh: 1
---- !u!1 &1599968021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3917900052172732962, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
-  m_PrefabInstance: {fileID: 1948067973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1599968024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5374339653359048470, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
@@ -15120,7 +15115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefabs: []
-  _activeWeaponPrefab: {fileID: 1599968021}
+  _activeWeaponPrefabs: []
 --- !u!4 &1687590219
 Transform:
   m_ObjectHideFlags: 0
