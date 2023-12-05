@@ -11,6 +11,8 @@ TagManager:
   - Weapon
   - RightWing
   - LeftWing
+  - EnemyBullet
+  - Item
   layers:
   - Default
   - TransparentFX

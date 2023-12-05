@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour
     private int _healthPoints;
     private int _extraHealthPoints;
 
+    private int _coin;
+
     private int _level;
 
     private int _experiencePoints;
@@ -40,6 +42,8 @@ public class PlayerManager : MonoBehaviour
     public int maxHealthPoints { get => Mathf.Min(_defaultHealthPoints + level / _healthPointsScaleFactor + _extraHealthPoints, _maxHealthPointsLimit); }
 
     public float power { get => _defaultPower + _level * _powerScaleFactor; }
+
+    public int coin {  get => _coin; }
 
     public int level { get => _level; }
 
@@ -95,6 +99,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void AddCoin(int amount)
+    {
+        _coin += amount;
+    }
+
     public void LevelUp()
     {
         if (_isDead) return;
@@ -126,6 +135,7 @@ public class PlayerManager : MonoBehaviour
 
         _healthPoints = _defaultHealthPoints;
         _extraHealthPoints = 0;
+        _coin = 0;
         _level = 1;
         _experiencePoints = 0;
         _isInvincible = false;
