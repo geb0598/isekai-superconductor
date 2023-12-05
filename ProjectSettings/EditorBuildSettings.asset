@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 6ea0683316e25184294f47861a79398b
   - enabled: 1
-    path: Assets/Scenes/GeonuSampleScene.unity
+    path: Assets/Scenes/GeonuSampleScene_geb0598.unity
     guid: 973a81aaa014e2a4797d9975d4c190d7
   m_configObjects: {}

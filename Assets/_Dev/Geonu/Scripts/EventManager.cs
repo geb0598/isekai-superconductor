@@ -15,4 +15,11 @@ public class EventManager : MonoBehaviour
 
     [Header("Enemy")]
     public UnityEvent enemyKilledEvent;
+
+    [Header("StoreItem")]
+    public UnityEvent<int> storeItemApproachEvent;
+    public UnityEvent storeItemLeaveEvent;
+
+    [Header("WeaponManager")]
+    public UnityEvent<int, int> takeNewWeapon;
 }
