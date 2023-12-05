@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     public Text killText;
     public Text coinText;
     public Text levelText;
+    public Image activeWeaponImage;
     public GridLayoutGroup weaponSlot;
     public GridLayoutGroup accessorySlot;
 
@@ -21,7 +22,7 @@ public class HUD : MonoBehaviour
     private int _coinCount;
     private int _levelCount;
 
-    private void Start()
+    private void OnEnable()
     {
         // Read From GameManager
         _killCount = 0;
@@ -33,15 +34,21 @@ public class HUD : MonoBehaviour
         coinText.text = _coinCount.ToString();
         levelText.text = string.Format("Lv.{0}", _levelCount);
 
+        // not yet implemented
+        // activeWeaponImage.sprite = Resources.Load<Sprite>("\ActiveItem" + WeaponManager.instance.GetWeapon(id).name);
+
         UpdateLevel(PlayerManager.instance.experiencePoints, PlayerManager.instance.experiencePointsRequired);
     }
 
     // weapon¿¡¼­ event invoke
-    public void AddSlot(int type, string equipName)
+    public void AddSlot(int type, int id)
     {
         string resourceName;
         GameObject slotPrefab;
         GameObject slot;
+
+        string equipName = PauseUI.GetEquipmentName(type, id);
+
         switch (type)
         {            
             // weapon
