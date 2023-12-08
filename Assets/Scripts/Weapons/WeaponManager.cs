@@ -12,9 +12,9 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject[] _activeWeaponPrefabs;
 
     private List<Weapon> _weapons;
-    private List<Weapon> _activeWeapons;
+    private List<ActiveWeapon> _activeWeapons;
 
-    private int selectedActiveWeaponId = 0;
+    public int selectedActiveWeaponId = 0;
 
     public static WeaponManager instance { get => _instance; }
 
@@ -26,7 +26,7 @@ public class WeaponManager : MonoBehaviour
         _weaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id);
         _weapons = _weaponPrefabs.Select(w => w.GetComponent<Weapon>()).ToList();
         _activeWeaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id);
-        _activeWeapons = _activeWeaponPrefabs.Select(w => w.GetComponent<Weapon>()).ToList();
+        _activeWeapons = _activeWeaponPrefabs.Select(w => w.GetComponent<ActiveWeapon>()).ToList();
     }
 
     public Weapon GetWeapon(int id)
@@ -34,9 +34,19 @@ public class WeaponManager : MonoBehaviour
         return _weapons[id];
     }
 
+    public Weapon GetActiveWeapon(int id)
+    {
+        return _activeWeapons[id];
+    }
+
     public void ActivateWeapon(int id)
     {
         _weaponPrefabs[id].SetActive(true);
+    }
+
+    public void ActivateActiveWeapon()
+    {
+        _activeWeaponPrefabs[selectedActiveWeaponId].SetActive(true);
     }
 
     public void SelectActiveWeapon(int id)

@@ -23,6 +23,8 @@ public abstract class Weapon : MonoBehaviour
 
     protected LayerMask _enemyLayer;
 
+    protected float _elapsedTimeAfterAttack;
+
     protected int _level;
 
     protected bool _isDelay;
@@ -33,17 +35,41 @@ public abstract class Weapon : MonoBehaviour
 
     public float attackDelaySeconds { get => _defaultAttackDelaySeconds / attackSpeed; }
 
+    public float remainingCooldownTime { get => attackDelaySeconds - _elapsedTimeAfterAttack; }
+
     public float power { get => _defaultPower + _level * _powerScaleFactor; }
 
     public float attackSpeed { get => _defaultAttackSpeed + _level * _attackSpeedScaleFactor; }
 
     public abstract IEnumerator Attack();
 
-    public abstract float GetDamage(float playerPower);
+    public float GetDamage() {
+        return PlayerManager.instance.power * power;
+    }
     
     public void LevelUp()
     {
         if (_level == _levelLimit) { return; }
         ++_level;
     }
+
+    protected virtual void Awake()
+    {
+        _bulletLauncher = GetComponent<BulletLauncher>(); 
+        _targetFinder = GetComponent<TargetFinder>();
+
+        _enemyLayer = LayerMask.GetMask("RangedEnemy", "MeleeEnemy");
+        _elapsedTimeAfterAttack = attackDelaySeconds;
+        _level = 1;
+        _isDelay = false;
+    }
+
+    protected virtual void Update()
+    {
+        if (_isDelay)
+        {
+            _elapsedTimeAfterAttack += Time.deltaTime;
+            _elapsedTimeAfterAttack = Mathf.Min(_elapsedTimeAfterAttack, attackDelaySeconds);
+        }
+    } 
 }

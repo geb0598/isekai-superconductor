@@ -10,11 +10,5 @@ public class HitPoint : MonoBehaviour
         {
             PlayerManager.instance.TakeDamage();
         }
-
-        if (collision.gameObject.CompareTag("Item"))
-        {
-            Debug.Log("Get!");
-            collision.gameObject.GetComponent<DropItem>().Get();
-        }
     }
 }
