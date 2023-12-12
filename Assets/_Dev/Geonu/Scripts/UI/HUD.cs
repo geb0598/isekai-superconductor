@@ -50,17 +50,11 @@ public class HUD : MonoBehaviour
         float remainingCooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).remainingCooldownTime;
         if (remainingCooldownTime == 0)
         {
-            Color transparentColor = activeWeaponCooltimeImage.color;
-            transparentColor.a = 0f;
-            activeWeaponCooltimeImage.color = transparentColor;
-
+            activeWeaponCooltimeImage.fillAmount = 0;
             return;
         }
 
         float cooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).attackDelaySeconds;
-        Color color = activeWeaponCooltimeImage.color;
-        color.a = 0.5f;
-        activeWeaponCooltimeImage.color = color;
         activeWeaponCooltimeImage.fillAmount = (cooldownTime - remainingCooldownTime) / cooldownTime;
     }
 
