@@ -2,21 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStartCanvas : MonoBehaviour
 {
-    public int activeItemID; // WeaponManager에서 관리
+    public Button[] selectButton;
+    public Button gameStartButton;
 
     public void GameStart()
     {
-        // gameStartEvent<int> Invoke -> gameStartEvent: ActiveItem Activate, ...
         SceneManager.LoadScene("GeonuSampleScene", LoadSceneMode.Single);
     }
 
-    // WeaponManager에서
-    public void SetActiveItemID(int id)
+    public void SetSelectButtonInteractive(int buttonIndex)
     {
-        activeItemID = id;
+        for (int i = 0; i < selectButton.Length; i++)
+        {
+            if (i == buttonIndex)
+                selectButton[i].interactable = false;
+            else
+                selectButton[i].interactable = true;
+        }
+    }
+
+    public void GameStartButtonInteractive()
+    {
+        if (gameStartButton.interactable == false)
+            gameStartButton.interactable = true;
     }
 
     public void EnableGameStartCanvas()
