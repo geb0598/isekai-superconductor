@@ -13,7 +13,6 @@ public class HitPoint : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Item"))
         {
-            Debug.Log("Get!");
             collision.gameObject.GetComponent<DropItem>().Get();
         }
     }

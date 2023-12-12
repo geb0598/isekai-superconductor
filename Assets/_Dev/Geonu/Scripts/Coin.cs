@@ -15,6 +15,6 @@ public class Coin : DropItem
     {
         PlayerManager.instance.AddCoin(_amount); 
         gameObject.SetActive(false);
-        GameManager.GetInstance().eventManager.playerGetCoinEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
+        GameManager.GetInstance().eventManager.playerTakeCoinEvent.Invoke(_amount); // called by playerManager.AddExperiencePoints
     }
 }

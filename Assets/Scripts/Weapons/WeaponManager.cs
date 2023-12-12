@@ -20,7 +20,7 @@ public class WeaponManager : MonoBehaviour
 
     public Weapon activeWeapon { get => _activeWeapons[selectedActiveWeaponId]; }
 
-    private void Start()
+    private void Awake()
     {
         _instance = this;
         _weaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id);
@@ -34,6 +34,11 @@ public class WeaponManager : MonoBehaviour
         return _weapons[id];
     }
 
+    public GameObject GetWeaponPrefab(int id)
+    {
+        return _weaponPrefabs[id];
+    }
+
     public Weapon GetActiveWeapon(int id)
     {
         return _activeWeapons[id];
@@ -42,6 +47,7 @@ public class WeaponManager : MonoBehaviour
     public void ActivateWeapon(int id)
     {
         _weaponPrefabs[id].SetActive(true);
+        GameManager.GetInstance().eventManager.addNewWeaponEvent.Invoke(0, id); // event invoke for ui
     }
 
     public void ActivateActiveWeapon()
