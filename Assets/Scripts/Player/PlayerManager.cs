@@ -63,6 +63,8 @@ public class PlayerManager : MonoBehaviour
 
         if (isInvincible) return;
 
+        GameManager.GetInstance().eventManager.playerTakeDamageEvent.Invoke();
+
         if (--_healthPoints > 0)
         {
             StartCoroutine(OnPlayerInvincible());
@@ -112,6 +114,7 @@ public class PlayerManager : MonoBehaviour
 
         ++_level;
         _experiencePoints = 0;
+        GameManager.GetInstance().eventManager.playerLevelUpEvent.Invoke(); // for HUD levelUp
     }
 
     private void OnPlayerDead()
