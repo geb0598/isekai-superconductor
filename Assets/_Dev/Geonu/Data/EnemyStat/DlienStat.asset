@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: DlienStat
   m_EditorClassIdentifier: 
-  maxHp: 13
-  speed: 2.3
+  defaultMaxHp: 9
+  speed: 2.15
   knockBackCoefficient: 530
   attackSpeed: 1.6
-  bulletSpeed: 4.6

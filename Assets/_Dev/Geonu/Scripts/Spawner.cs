@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private Transform[] _spawnPoints;
+    public SpawnPatterns[] spawnPatterns;
+
+    public float[] _spawnTimes;
+
+    private Transform[] _spawnPoints; // index starts from 1
 
     private float _timer;
     private float _spawnTime;
 
+    private int _spawnPatternIndex; // loop
+
     private void Awake()
     {
         _spawnPoints = GetComponentsInChildren<Transform>();
-        _spawnTime = 1f;
+        _spawnPatternIndex = 0;
     }
 
 
@@ -20,7 +26,7 @@ public class Spawner : MonoBehaviour
     {
         _timer += Time.deltaTime;
 
-        if (_timer > _spawnTime)
+        if (_timer > _spawnTimes[GameManager.GetInstance().subWave])
         {
             Spawn();
             _timer = 0f;
@@ -29,12 +35,68 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        int type = Random.Range(0, 2);
-        int index = Random.Range(0, 6);
-
-        GameObject enemy = GameManager.GetInstance().poolManager.Get(type, index);
-
-        enemy.transform.position = _spawnPoints[Random.Range(1, _spawnPoints.Length)].position;
-        enemy.GetComponent<Enemy>().Init();
+        _spawnPatternIndex = (_spawnPatternIndex + 1) % spawnPatterns[GameManager.GetInstance().subWave].spawnPatterns.Length;
+        spawnPatterns[GameManager.GetInstance().subWave].spawnPatterns[_spawnPatternIndex].PatternSpawn(_spawnPoints);
     }
+
+    public void OnSubWaveChanged()
+    {
+        _spawnPatternIndex = 0;
+    }
+    public void EnableSpawner()
+    {
+        gameObject.SetActive(true);
+    }
+
+        public void DisableSpawner()
+    {
+        gameObject.SetActive(false);
+    }
+}
+
+[System.Serializable]
+public class SpawnPattern
+{
+    public EnemyGroup enemyGroup;
+    public SpawnPoints spawnPoints;
+
+    public void PatternSpawn(Transform[] _spawnPoints)
+    {
+        for (int i = 0; i < spawnPoints.spawnPointsIndices.Length; i++)
+        {
+            for (int j = 0; j < spawnPoints.spawnCounts[i] * GameManager.GetInstance().wave; j++)
+            {
+                int index = SelectIndexWithProbabilities(enemyGroup.probabilities);
+                GameObject enemy = GameManager.GetInstance().poolManager.Get(enemyGroup.enemies[index] / 10, enemyGroup.enemies[index] % 10);
+
+                enemy.transform.position = _spawnPoints[spawnPoints.spawnPointsIndices[i]].position;
+                enemy.GetComponent<Enemy>().Init();
+            }
+        }
+    }
+
+    public int SelectIndexWithProbabilities(float[] probabilities)
+    {
+        float x = Random.Range(0f, 1f);
+        float sum = 0f;
+        int index = 0;
+
+        for (; index < probabilities.Length - 1; index++)
+        {
+            sum += probabilities[index];
+
+            if (x <= sum)
+            {
+                break;
+            }
+        }
+
+        return index;
+    }
+}
+
+[System.Serializable]
+public class SpawnPatterns
+{
+    public SpawnPattern[] spawnPatterns;
 }

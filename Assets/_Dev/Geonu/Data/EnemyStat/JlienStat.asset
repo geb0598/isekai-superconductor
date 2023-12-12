@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: JlienStat
   m_EditorClassIdentifier: 
-  maxHp: 19
-  speed: 2.9
-  knockBackCoefficient: 590
+  defaultMaxHp: 13.5
+  speed: 2.65
+  knockBackCoefficient: 730
   attackSpeed: 0
-  bulletSpeed: 0

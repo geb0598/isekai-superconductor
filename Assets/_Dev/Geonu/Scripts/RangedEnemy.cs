@@ -6,7 +6,7 @@ public class RangedEnemy : Enemy
 {
     private BulletLauncher _bulletLauncher;
 
-    private float _defaultRange = 5f;
+    private float _defaultRange;
     private float _maxRange;
 
     private bool _isInRange;
@@ -58,18 +58,12 @@ public class RangedEnemy : Enemy
         Move();
     }
 
-
-    private void Shoot()
-    {
-        GameObject enemyBullet = GameManager.GetInstance().poolManager.Get(2, 1);
-        enemyBullet.GetComponent<EnemyBullet>().Init(_rigidbody2d.position, _stat.bulletSpeed);
-    }
-
     private void OnEnable()
     {
         _timer = 0f;
         _isLive = true;
         _isInRange = false;
+        _defaultRange = 10f;
         _bulletLauncher = GetComponent<BulletLauncher>();
     }
 

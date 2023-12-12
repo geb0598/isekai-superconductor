@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: ElienStat
   m_EditorClassIdentifier: 
-  maxHp: 14
-  speed: 2.4
+  defaultMaxHp: 9.5
+  speed: 2.2
   knockBackCoefficient: 540
   attackSpeed: 1.8
-  bulletSpeed: 4.8

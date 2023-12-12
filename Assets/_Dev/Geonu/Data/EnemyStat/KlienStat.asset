@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: KlienStat
   m_EditorClassIdentifier: 
-  maxHp: 20
-  speed: 3
-  knockBackCoefficient: 600
+  defaultMaxHp: 14
+  speed: 2.7
+  knockBackCoefficient: 740
   attackSpeed: 0
-  bulletSpeed: 0
