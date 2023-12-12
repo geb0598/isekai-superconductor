@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
 
         if (_curHp > 0)
         {
-            StartCoroutine(KnockBack());
+            StartCoroutine(KnockBack(_stat.knockBackCoefficient));
         }
 
         else
@@ -125,22 +125,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Died() 
-    {
-        _isLive = false;
-        DropCoin();
-        GameManager.GetInstance().eventManager.enemyKilledEvent.Invoke();
-        gameObject.SetActive(false);
-    }
-
-    private IEnumerator KnockBack()
+    public IEnumerator KnockBack(float knockBackCoefficient)
     {
         yield return _waitForFixedUpdate;
 
         Vector3 playerPos = GameManager.GetInstance().playerController.transform.position;
         Vector3 dirVec = transform.position - playerPos;
 
-        _rigidbody2d.AddForce(dirVec.normalized * _stat.knockBackCoefficient);
+        _rigidbody2d.AddForce(dirVec.normalized * knockBackCoefficient);
+    }
+
+    private void Died() 
+    {
+        _isLive = false;
+        DropCoin();
+        GameManager.GetInstance().eventManager.enemyKilledEvent.Invoke();
+        gameObject.SetActive(false);
     }
 
     private void DropCoin()

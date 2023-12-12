@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
 {
     private static PlayerManager _instance;
 
+    [SerializeField] private GameObject _player;
+
     [SerializeField] private int _maxHealthPointsLimit;
     [SerializeField] private int _defaultHealthPoints;
     [SerializeField] private int _healthPointsScaleFactor;
@@ -36,6 +38,8 @@ public class PlayerManager : MonoBehaviour
     private bool _isDead;
 
     public static PlayerManager instance { get => _instance; }
+
+    public GameObject player { get => _player; }
 
     public int healthPoints { get => _healthPoints; }
 

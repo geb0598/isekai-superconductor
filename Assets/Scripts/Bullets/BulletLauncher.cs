@@ -47,7 +47,7 @@ public class BulletLauncher : MonoBehaviour
             if (gameObject.CompareTag("Weapon"))
             {
                 Weapon weapon = GetComponent<Weapon>();
-                bullet.Initialize(transform, target, true, weapon.GetDamage(PlayerManager.instance.power));
+                bullet.Initialize(transform, target, true, weapon.GetDamage());
             }
             else
             {
@@ -66,7 +66,7 @@ public class BulletLauncher : MonoBehaviour
             if (gameObject.CompareTag("Weapon"))
             {
                 Weapon weapon = GetComponent<Weapon>();
-                bullet.Initialize(transform, target, true, weapon.GetDamage(PlayerManager.instance.power));
+                bullet.Initialize(transform, target, true, weapon.GetDamage());
             }
             else
             {

@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Molotov : Weapon
 {
-    public override float GetDamage(float playerPower)
-    {
-        return power * playerPower;
-    }
-
     public override IEnumerator Attack()
     {
         List<Vector2> targets = _targetFinder.FindTargets(transform.position, _enemyLayer, new List<GameObject>());
@@ -24,20 +19,14 @@ public class Molotov : Weapon
         _isDelay = false;
    }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (!_isDelay && _bulletLauncher.isLaunchReady)
         {
             _isDelay = true;
             StartCoroutine(Attack());
         }
-    }
-    private void Awake()
-    {
-        _bulletLauncher = GetComponent<BulletLauncher>();
-        _targetFinder = GetComponent<TargetFinder>();
-        _enemyLayer = LayerMask.GetMask("RangedEnemy", "MeleeEnemy");
-        _level = 1;
-        _isDelay = false;
     }
 }
