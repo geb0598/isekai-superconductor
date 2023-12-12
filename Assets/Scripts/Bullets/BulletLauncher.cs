@@ -42,12 +42,19 @@ public class BulletLauncher : MonoBehaviour
     {
         foreach (Vector2 target in _targets)
         {
-            GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
+            GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, _bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
+            // GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
             Bullet bullet = bulletInstance.GetComponent<Bullet>();
             if (gameObject.CompareTag("Weapon"))
             {
                 Weapon weapon = GetComponent<Weapon>();
                 bullet.Initialize(transform, target, true, weapon.GetDamage());
+            }
+            else if (gameObject.CompareTag("Bullet"))
+            {
+                Debug.Log("test");
+                Bullet bulletParent = GetComponent<Bullet>();
+                bullet.Initialize(transform, target, true, bulletParent.damage);
             }
             else
             {
@@ -67,6 +74,12 @@ public class BulletLauncher : MonoBehaviour
             {
                 Weapon weapon = GetComponent<Weapon>();
                 bullet.Initialize(transform, target, true, weapon.GetDamage());
+            }
+            else if (gameObject.CompareTag("Bullet"))
+            {
+                Debug.Log("test");
+                Bullet bulletParent = GetComponent<Bullet>();
+                bullet.Initialize(transform, target, true, bulletParent.damage);
             }
             else
             {

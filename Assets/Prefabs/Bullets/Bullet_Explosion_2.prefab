@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1013337407654927255}
   m_Layer: 0
   m_Name: Bullet_Explosion_2
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,8 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 1
+  id: 0
+  _isFollowingLauncher: 0
 --- !u!1001 &2068024106575452888
 PrefabInstance:
   m_ObjectHideFlags: 0

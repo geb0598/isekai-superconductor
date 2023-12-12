@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6285210255098401548}
   m_Layer: 0
   m_Name: Bullet_Waveform_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 5
+  id: 0
   _speed: 10
   _isPenetrative: 1
 --- !u!1 &8588262972790874144

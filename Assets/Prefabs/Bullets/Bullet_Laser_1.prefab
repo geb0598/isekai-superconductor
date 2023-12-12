@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8111315773656717182}
   m_Layer: 0
   m_Name: Bullet_Laser_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,6 +183,8 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 10
+  _hasNoDamage: 0
+  id: 4
   _isFollowingLauncher: 1
 --- !u!114 &8111315773656717182
 MonoBehaviour:

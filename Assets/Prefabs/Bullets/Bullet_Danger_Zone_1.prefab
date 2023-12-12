@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 626039312779361273}
   m_Layer: 0
   m_Name: Bullet_Danger_Zone_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,10 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf65ed97ef5fd0d4aa82dea7c6906e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _acceleration: 0
+  _collisionEffect: {fileID: 0}
+  _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 3
-  _isPenetrative: 0
+  _hasNoDamage: 1
+  id: 1
+  _isFollowingLauncher: 0
 --- !u!1 &3381567310759954676
 GameObject:
   m_ObjectHideFlags: 0

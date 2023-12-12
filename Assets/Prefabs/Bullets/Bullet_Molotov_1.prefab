@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7206400599479707806}
   m_Layer: 0
   m_Name: Bullet_Molotov_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,6 +174,8 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
   _lifeTimeSeconds: 3
+  _hasNoDamage: 1
+  id: 2
   _height: 10
 --- !u!114 &1866753390
 MonoBehaviour:
@@ -236,4 +238,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f539d81528417541a80331c7f3075c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotationCount: 0
   _rotationSpeed: 180

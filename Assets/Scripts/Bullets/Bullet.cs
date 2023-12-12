@@ -8,6 +8,9 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected GameObject _collisionEffect;
     [SerializeField] protected GameObject _destroyEffect;
     [SerializeField] protected float _lifeTimeSeconds;
+    [SerializeField] private bool _hasNoDamage;
+
+    public int id;
 
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
@@ -25,6 +28,7 @@ public abstract class Bullet : MonoBehaviour
     public Transform launcher { get => _launcher; }
     public Vector2 target { get => _target; }
     public bool isPlayerBullet { get => _isPlayerBullet; }
+    public float damage { get => _damage; }
 
     protected abstract void UpdateBulletTransform();
 
@@ -44,11 +48,16 @@ public abstract class Bullet : MonoBehaviour
         {
             Instantiate(_destroyEffect, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     protected void ApplyDamage(Collider2D collision)
     {
+        if (_hasNoDamage)
+        {
+            return;
+        }
         if (_isPlayerBullet && collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);

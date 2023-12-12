@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7452809166166270362}
   m_Layer: 0
   m_Name: Bullet_Fire_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf65ed97ef5fd0d4aa82dea7c6906e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionEffect: {fileID: 0}
+  _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 5
+  id: 3
+  _isFollowingLauncher: 0
 --- !u!1001 &3279133703153943594
 PrefabInstance:
   m_ObjectHideFlags: 0

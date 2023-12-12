@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6285210255098401548}
   m_Layer: 0
   m_Name: Bullet_Pistol_1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   _collisionEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 10
+  id: 0
   _speed: 15
   _isPenetrative: 0
 --- !u!1 &8588262972790874144
