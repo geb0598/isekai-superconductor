@@ -13,6 +13,7 @@ public class HUD : MonoBehaviour
     public Text levelText;
     public Image activeWeaponImage;
     public Text activeWeaponCooltimeText;
+    public Image activeWeaponCooltimeImage;
     public GridLayoutGroup weaponSlot;
     public GridLayoutGroup accessorySlot;
 
@@ -46,8 +47,21 @@ public class HUD : MonoBehaviour
 
     private void Update()
     {
-        // activeWeaponCooltime update
-        activeWeaponCooltimeText.text = string.Format("");
+        float remainingCooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).remainingCooldownTime;
+        if (remainingCooldownTime == 0)
+        {
+            Color transparentColor = activeWeaponCooltimeImage.color;
+            transparentColor.a = 0f;
+            activeWeaponCooltimeImage.color = transparentColor;
+
+            return;
+        }
+
+        float cooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).attackDelaySeconds;
+        Color color = activeWeaponCooltimeImage.color;
+        color.a = 0.5f;
+        activeWeaponCooltimeImage.color = color;
+        activeWeaponCooltimeImage.fillAmount = (cooldownTime - remainingCooldownTime) / cooldownTime;
     }
 
     // weapon¿¡¼­ event invoke
