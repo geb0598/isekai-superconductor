@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8772518877068428642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3944519422820595326}
+  - component: {fileID: 1627012682603618639}
+  - component: {fileID: 4917434501422319647}
+  m_Layer: 0
+  m_Name: MaglevTrain_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3944519422820595326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772518877068428642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.331485, y: 14.582952, z: 0.5790971}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1627012682603618639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772518877068428642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028d9a9581ede894da3ddd6f5d418bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  _levelLimit: 8
+  _defaultPower: 80
+  _powerScaleFactor: 10
+  _defaultAttackDelaySeconds: 30
+  _defaultAttackSpeed: 1
+  _attackSpeedScaleFactor: 1
+  _bulletCounts: 
+  _upgradeLevel: 
+--- !u!114 &4917434501422319647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772518877068428642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _launchDelaySeconds: 0
+  bulletPrefabs:
+  - {fileID: 4387029020448194450, guid: 18a9def681f496e41acd201e270b1474, type: 3}
+  bulletCount: 1
+  launchPatternFactory:
+    Type: 0
+    DirectLaunchPattern:
+      _precision: 0
+    CircularLaunchPattern:
+      _isClockwise: 0
+    RandomLaunchPattern:
+      _range: 0

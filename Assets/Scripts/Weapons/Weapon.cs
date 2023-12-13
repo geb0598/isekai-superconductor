@@ -14,9 +14,12 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _powerScaleFactor;
 
     [SerializeField] private float _defaultAttackDelaySeconds;
-
     [SerializeField] private float _defaultAttackSpeed;
     [SerializeField] private float _attackSpeedScaleFactor;
+
+    [SerializeField] private List<List<GameObject>> _bulletPrefabs;
+    [SerializeField] private int[] _bulletCounts;
+    [SerializeField] private int[] _upgradeLevel;
 
     protected BulletLauncher _bulletLauncher;
     protected TargetFinder _targetFinder;
@@ -28,6 +31,8 @@ public abstract class Weapon : MonoBehaviour
     protected int _level;
 
     protected bool _isDelay;
+
+    private int _upgradeTier = 0;
 
     public int level { get => _level; }
 
@@ -50,7 +55,10 @@ public abstract class Weapon : MonoBehaviour
     public void LevelUp()
     {
         if (_level == _levelLimit) { return; }
-        ++_level;
+        if (++_level == _upgradeLevel[_upgradeTier])
+        {
+            Upgrade();
+        }
     }
 
     protected virtual void Awake()
@@ -58,6 +66,8 @@ public abstract class Weapon : MonoBehaviour
         _bulletLauncher = GetComponent<BulletLauncher>(); 
         _targetFinder = GetComponent<TargetFinder>();
 
+        Upgrade();
+        
         _enemyLayer = LayerMask.GetMask("RangedEnemy", "MeleeEnemy");
         _elapsedTimeAfterAttack = attackDelaySeconds;
         _level = 1;
@@ -71,5 +81,16 @@ public abstract class Weapon : MonoBehaviour
             _elapsedTimeAfterAttack += Time.deltaTime;
             _elapsedTimeAfterAttack = Mathf.Min(_elapsedTimeAfterAttack, attackDelaySeconds);
         }
-    } 
+    }
+
+    private void Upgrade()
+    {
+        if (_level != _upgradeLevel[_upgradeTier])
+        {
+            return;
+        }
+        _bulletLauncher.bulletPrefabs = _bulletPrefabs[_upgradeTier];
+        _bulletLauncher.bulletCount = _bulletCounts[_upgradeTier];
+        ++_upgradeTier;
+    }
 }
