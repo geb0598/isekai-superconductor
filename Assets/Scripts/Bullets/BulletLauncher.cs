@@ -77,7 +77,6 @@ public class BulletLauncher : MonoBehaviour
             }
             else if (gameObject.CompareTag("Bullet"))
             {
-                Debug.Log("test");
                 Bullet bulletParent = GetComponent<Bullet>();
                 bullet.Initialize(transform, target, true, bulletParent.damage);
             }

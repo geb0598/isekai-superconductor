@@ -13,6 +13,10 @@ TagManager:
   - LeftWing
   - EnemyBullet
   - Item
+  - FxTemporaire
+  - Bullet
+  - Ground
+  - GroundDetector
   layers:
   - Default
   - TransparentFX
@@ -47,14 +51,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2173632209
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 1016713249
-    locked: 0
   - name: Player
     uniqueID: 408713719
+    locked: 0
+  - name: Enemy
+    uniqueID: 552397049
     locked: 0
   - name: Bullet
     uniqueID: 3566495639
