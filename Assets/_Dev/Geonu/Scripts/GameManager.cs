@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // test
+        if (PlayerManager.instance.isDead)
+            eventManager.gameEndEvent.Invoke();
+        // test end
+
         if (!_isInProgress)
         {
             _waveCheckTimer -= Time.deltaTime;

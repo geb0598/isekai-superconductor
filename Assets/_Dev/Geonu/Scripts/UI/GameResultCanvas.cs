@@ -31,6 +31,8 @@ public class GameResultCanvas : MonoBehaviour
 
         canvas = GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+
+        UpdateCanvas();
     }
 
 
@@ -40,7 +42,7 @@ public class GameResultCanvas : MonoBehaviour
 
         gameResultText.text = (GameManager.GetInstance().isClear) ? "Clear" : "Fail";
         level.text = string.Format("Level: {0} / {1}", PlayerManager.instance.level, PlayerManager.instance.levelLimit);
-        wave.text = string.Format("Wave: {0}", GameManager.GetInstance().wave);
+        wave.text = string.Format("Wave: {0} - {1}", GameManager.GetInstance().wave, (GameManager.GetInstance().subWave - 1) % 5 + 1);
         time.text = string.Format("Time: {0:D2}:{1:D2}", Mathf.FloorToInt(GameManager.GetInstance().timer / 60), Mathf.FloorToInt(GameManager.GetInstance().timer % 60));
         coin.text = string.Format("Coin: {0}", PlayerManager.instance.coin);
         kill.text = string.Format("Kill: {0}", GameManager.GetInstance().killCount);
@@ -48,7 +50,7 @@ public class GameResultCanvas : MonoBehaviour
         // Weapons init not yet implemented
         for (int i = 0; i < _weaponCount; i++)
         {
-            weaponLevels[i].text = WeaponManager.instance.GetWeapon(_weaponsId[i]).level.ToString();
+            weaponLevels[i].text = WeaponManager.instance.GetWeapon(_weaponsId[i]).level == 0 ? "" : WeaponManager.instance.GetWeapon(_weaponsId[i]).level.ToString();
         }
         string activeWeaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
         activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + activeWeaponName).GetComponent<SpriteRenderer>().sprite;
@@ -107,5 +109,18 @@ public class GameResultCanvas : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvas.sortingOrder = 0;
+    }
+
+    public void ShowCanvas()
+    {
+        DrawFront();
+        UndoTransparentCanvas();
+        UpdateCanvas();
+    }
+    
+    public void HideCanvas()
+    {
+        SendBack();
+        TransparentCanvas();
     }
 }
