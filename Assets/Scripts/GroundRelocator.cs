@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundRelocator : MonoBehaviour
 {
-    [SerializeField] float _width;
+    [SerializeField] private float _width;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -15,7 +15,8 @@ public class GroundRelocator : MonoBehaviour
 
         Vector3 direction = PlayerManager.instance.player.transform.position - transform.position;
 
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) 
+        {
             direction.y = 0;
         } 
         else
