@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BulletLauncher : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _bulletPrefabs;
-    [SerializeField] private int _bulletCount;
-
+    [SerializeField] private GameObject[] _launchPoints;
     [SerializeField] private float _launchDelaySeconds;
 
+    public List<GameObject> bulletPrefabs;
+    public int bulletCount;
+
     public LaunchPatternFactory launchPatternFactory;
+
     private ILaunchPattern _launchPattern;
 
     private List<Vector2> _targets;
@@ -25,47 +27,16 @@ public class BulletLauncher : MonoBehaviour
         if (!_isLaunchReady) { return; }
 
         _isLaunchReady = false;
-        _launchPattern.GeneratePattern(transform, _targets, target, _bulletCount);
-        if (_launchDelaySeconds == 0)
-        {
-            LaunchBullets();
-        } 
-        else
-        {
-            StartCoroutine(LaunchBulletsWithDelay());
-        }
+        _launchPattern.GeneratePattern(transform, _targets, target, bulletCount);
+        StartCoroutine(LaunchBullets());
         _currentBulletIndex++;
-        _currentBulletIndex %= _bulletPrefabs.Count;
+        _currentBulletIndex %= bulletPrefabs.Count;
     }
 
-    private void LaunchBullets()
+    private IEnumerator LaunchBullets()
     {
-        foreach (Vector2 target in _targets)
-        {
-            GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, _bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
-            // GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
-            Bullet bullet = bulletInstance.GetComponent<Bullet>();
-            if (gameObject.CompareTag("Weapon"))
-            {
-                Weapon weapon = GetComponent<Weapon>();
-                bullet.Initialize(transform, target, true, weapon.GetDamage());
-            }
-            else if (gameObject.CompareTag("Bullet"))
-            {
-                Debug.Log("test");
-                Bullet bulletParent = GetComponent<Bullet>();
-                bullet.Initialize(transform, target, true, bulletParent.damage);
-            }
-            else
-            {
-                bullet.Initialize(transform, target, false, 0);
-            }
-        }
-        _isLaunchReady = true;
-    }
-
-    private IEnumerator LaunchBulletsWithDelay()
-    {
+        // select one of the launch points if not null
+        // not yet implemented
         foreach (Vector2 target in _targets)
         {
             GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, _bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
@@ -81,11 +52,15 @@ public class BulletLauncher : MonoBehaviour
                 Bullet bulletParent = GetComponent<Bullet>();
                 bullet.Initialize(transform, target, true, bulletParent.damage);
             }
-            else
+            else if (gameObject.CompareTag("Enemy"))
             {
                 bullet.Initialize(transform, target, false, 0);
             }
-            yield return new WaitForSeconds(_launchDelaySeconds);
+
+            if (_launchDelaySeconds != 0)
+            {
+                yield return new WaitForSeconds(_launchDelaySeconds);
+            }
         }
         _isLaunchReady = true;
     }

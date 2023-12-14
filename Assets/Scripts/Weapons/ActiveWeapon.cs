@@ -9,7 +9,7 @@ public class ActiveWeapon : Weapon
         if (_isDelay) yield break;
         _isDelay = true;
         _elapsedTimeAfterAttack = 0;
-        _bulletLauncher.Launch(transform.position);
+        _bulletLauncher.Launch(transform.parent.position);
         yield return new WaitForSeconds(attackDelaySeconds);
         _isDelay = false;
     }
