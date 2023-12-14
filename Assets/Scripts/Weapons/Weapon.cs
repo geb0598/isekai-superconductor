@@ -6,6 +6,12 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [System.Serializable]
+    public class BulletList
+    {
+        public List<GameObject> prefabs = new List<GameObject>();
+    }
+
     public int id;
 
     [SerializeField] private int _levelLimit;
@@ -17,7 +23,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _defaultAttackSpeed;
     [SerializeField] private float _attackSpeedScaleFactor;
 
-    [SerializeField] private List<List<GameObject>> _bulletPrefabs;
+    [SerializeField] private List<BulletList> _bulletPrefabs;
     [SerializeField] private int[] _bulletCounts;
     [SerializeField] private int[] _upgradeLevel;
 
@@ -30,9 +36,9 @@ public abstract class Weapon : MonoBehaviour
 
     protected int _level;
 
-    protected bool _isDelay;
+    private int _upgradeTier;
 
-    private int _upgradeTier = 0;
+    protected bool _isDelay;
 
     public int level { get => _level; }
 
@@ -65,13 +71,14 @@ public abstract class Weapon : MonoBehaviour
     {
         _bulletLauncher = GetComponent<BulletLauncher>(); 
         _targetFinder = GetComponent<TargetFinder>();
-
-        Upgrade();
         
         _enemyLayer = LayerMask.GetMask("RangedEnemy", "MeleeEnemy");
         _elapsedTimeAfterAttack = attackDelaySeconds;
         _level = 1;
+        _upgradeTier = 0;
         _isDelay = false;
+
+        Upgrade();
     }
 
     protected virtual void Update()
@@ -89,7 +96,8 @@ public abstract class Weapon : MonoBehaviour
         {
             return;
         }
-        _bulletLauncher.bulletPrefabs = _bulletPrefabs[_upgradeTier];
+        Debug.Log("Upgrade");
+        _bulletLauncher.bulletPrefabs = _bulletPrefabs[_upgradeTier].prefabs;
         _bulletLauncher.bulletCount = _bulletCounts[_upgradeTier];
         ++_upgradeTier;
     }

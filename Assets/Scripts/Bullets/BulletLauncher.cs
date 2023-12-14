@@ -7,12 +7,14 @@ public class BulletLauncher : MonoBehaviour
     [SerializeField] private GameObject[] _launchPoints;
     [SerializeField] private float _launchDelaySeconds;
 
-    public List<GameObject> bulletPrefabs;
-    public int bulletCount;
+    [SerializeField] private List<GameObject> _bulletPrefabs;
+    [SerializeField] private int _bulletCount;
 
     public LaunchPatternFactory launchPatternFactory;
 
     private ILaunchPattern _launchPattern;
+
+    private Transform _launcher;
 
     private List<Vector2> _targets;
 
@@ -22,39 +24,58 @@ public class BulletLauncher : MonoBehaviour
 
     public bool isLaunchReady { get => _isLaunchReady; }
 
+    public List<GameObject> bulletPrefabs
+    {
+        set
+        {
+            _bulletPrefabs = value;
+        }
+    } 
+
+    public int bulletCount
+    {
+        set
+        {
+            _bulletCount = value;
+        }
+    }
+
     public void Launch(Vector2 target)
     {
         if (!_isLaunchReady) { return; }
 
         _isLaunchReady = false;
-        _launchPattern.GeneratePattern(transform, _targets, target, bulletCount);
+        _launcher = transform;
+        if (_launchPoints.Length != 0)
+        {
+            _launcher = _launchPoints[Random.Range(0, _launchPoints.Length)].transform;
+        }
+        _launchPattern.GeneratePattern(_launcher, _targets, target, _bulletCount);
         StartCoroutine(LaunchBullets());
         _currentBulletIndex++;
-        _currentBulletIndex %= bulletPrefabs.Count;
+        _currentBulletIndex %= _bulletPrefabs.Count;
     }
 
     private IEnumerator LaunchBullets()
     {
-        // select one of the launch points if not null
-        // not yet implemented
         foreach (Vector2 target in _targets)
         {
-            GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, _bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
-            // GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
+            // GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
+            GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
             Bullet bullet = bulletInstance.GetComponent<Bullet>();
             if (gameObject.CompareTag("Weapon"))
             {
                 Weapon weapon = GetComponent<Weapon>();
-                bullet.Initialize(transform, target, true, weapon.GetDamage());
+                bullet.Initialize(_launcher, target, true, weapon.GetDamage());
             }
             else if (gameObject.CompareTag("Bullet"))
             {
                 Bullet bulletParent = GetComponent<Bullet>();
-                bullet.Initialize(transform, target, true, bulletParent.damage);
+                bullet.Initialize(_launcher, target, true, bulletParent.damage);
             }
             else if (gameObject.CompareTag("Enemy"))
             {
-                bullet.Initialize(transform, target, false, 0);
+                bullet.Initialize(_launcher, target, false, 0);
             }
 
             if (_launchDelaySeconds != 0)

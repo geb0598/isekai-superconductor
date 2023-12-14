@@ -53,6 +53,15 @@ MonoBehaviour:
   _defaultAttackDelaySeconds: 2
   _defaultAttackSpeed: 1
   _attackSpeedScaleFactor: 0
+  _bulletPrefabs:
+  - prefabs:
+    - {fileID: 4027783587094365756, guid: d5aa151070900884997bdfd25f63ef14, type: 3}
+  - prefabs:
+    - {fileID: 4027783587094365756, guid: 2f1f2f9fd3bd9cf43b00c874f96e1b49, type: 3}
+  - prefabs:
+    - {fileID: 4027783587094365756, guid: c5c901bb37c39ee43b1693acd0a4f0e4, type: 3}
+  _bulletCounts: 030000000500000005000000
+  _upgradeLevel: 010000000400000008000000
 --- !u!114 &3244322749520524831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,10 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefabs:
-  - {fileID: 4027783587094365756, guid: d5aa151070900884997bdfd25f63ef14, type: 3}
-  _bulletCount: 3
+  _launchPoints: []
   _launchDelaySeconds: 0.2
+  _bulletPrefabs: []
+  _bulletCount: 0
   launchPatternFactory:
     Type: 0
     DirectLaunchPattern:

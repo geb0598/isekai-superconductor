@@ -171,7 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
-  _lifeTimeSeconds: 0
+  _lifeTimeSeconds: 5
+  _hasNoDamage: 0
   id: 0
   _speed: 90
   _isPenetrative: 1

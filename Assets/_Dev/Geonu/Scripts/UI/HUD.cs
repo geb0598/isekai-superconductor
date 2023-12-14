@@ -36,7 +36,7 @@ public class HUD : MonoBehaviour
 
         // not yet implemented
         string weaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
-        activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + weaponName).GetComponent<SpriteRenderer>().sprite;
+        // activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + weaponName).GetComponent<SpriteRenderer>().sprite;
         UpdateLevel(PlayerManager.instance.experiencePoints, PlayerManager.instance.experiencePointsRequired);
     }
 

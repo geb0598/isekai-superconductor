@@ -23,9 +23,9 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         _instance = this;
-        _weaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id);
+        _weaponPrefabs = _weaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id).ToArray();
         _weapons = _weaponPrefabs.Select(w => w.GetComponent<Weapon>()).ToList();
-        _activeWeaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id);
+        _activeWeaponPrefabs = _activeWeaponPrefabs.OrderBy(w => w.GetComponent<Weapon>().id).ToArray();
         _activeWeapons = _activeWeaponPrefabs.Select(w => w.GetComponent<ActiveWeapon>()).ToList();
     }
 

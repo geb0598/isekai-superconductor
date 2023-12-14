@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class LKW99 : Weapon
 {
-    private void Start()
-    {
-        StartCoroutine(Attack());
-    }
-
     public override IEnumerator Attack()
     {
-        _bulletLauncher.Launch(new Vector2(0, 1));
-        yield return null;
+        yield return new WaitUntil(() => _bulletLauncher.isLaunchReady);
+        _bulletLauncher.Launch((Vector2)transform.position + Random.insideUnitCircle);
+        yield return new WaitForSeconds(attackDelaySeconds);
+        _isDelay = false;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (!_isDelay)
+        {
+            _isDelay = true;
+            StartCoroutine(Attack());
+        }
     }
 }
