@@ -4600,7 +4600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4932982519140767269, guid: c23e3fa4eff69d3439afb3d7895a8103, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c23e3fa4eff69d3439afb3d7895a8103, type: 3}
@@ -4627,7 +4627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1229694597218356168, guid: b685c7d9657c33646bb165ff5003623e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8348456687062871412, guid: b685c7d9657c33646bb165ff5003623e, type: 3}
       propertyPath: m_RootOrder
@@ -4985,6 +4985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  prices: 
+  descriptions: []
+  storeItemDescriptionPrefab: {fileID: 0}
 --- !u!50 &113331153
 Rigidbody2D:
   serializedVersion: 4
@@ -5460,6 +5463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  prices: 
+  descriptions: []
+  storeItemDescriptionPrefab: {fileID: 0}
 --- !u!50 &152607464
 Rigidbody2D:
   serializedVersion: 4
@@ -5888,6 +5894,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  prices: 
+  descriptions: []
+  storeItemDescriptionPrefab: {fileID: 0}
 --- !u!50 &218838790
 Rigidbody2D:
   serializedVersion: 4
@@ -6089,6 +6098,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 959693406}
     m_Modifications:
+    - target: {fileID: 1678169765, guid: 58867e612c5e5bb4895be9d03de3b7f7, type: 3}
+      propertyPath: _bulletCounts.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 448081398733586140, guid: 58867e612c5e5bb4895be9d03de3b7f7, type: 3}
       propertyPath: m_Name
       value: LKW99
@@ -11833,6 +11846,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421934550}
   m_CullTransparentMesh: 1
+--- !u!1 &432760621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432760622}
+  m_Layer: 0
+  m_Name: LaunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432760622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432760621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -147, y: -1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1784486031}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441049675
 GameObject:
   m_ObjectHideFlags: 0
@@ -13300,11 +13344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ee308d220007b4b922a266a1881da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 1057649392}
-  - {fileID: 152607462}
-  - {fileID: 113331151}
-  - {fileID: 218838788}
+  storeItem: {fileID: 0}
   nameText: {fileID: 1738363332}
   levelText: {fileID: 649500381}
   descriptionText: {fileID: 275527598}
@@ -15480,6 +15520,10 @@ PrefabInstance:
     - target: {fileID: 3917900052172732962, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
       propertyPath: m_Name
       value: Bomb_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917900052172732962, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5374339653359048470, guid: 1f4f2e64fb598184e9866800d54ef053, type: 3}
       propertyPath: m_RootOrder
@@ -22220,6 +22264,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  waveStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  waveEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  subWaveIncreaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  gameEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   playerLevelUpEvent:
     m_PersistentCalls:
       m_Calls:
@@ -22235,36 +22291,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerGetExpEvent:
+  playerTakeDamageEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1008974515}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
-        m_MethodName: UpdateExpSlider
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playerGetCoinEvent:
+      m_Calls: []
+  playerRestoreHealthPointsEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1008974515}
-        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
-        m_MethodName: UpdateCoin
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  playerAddExtraHealthPointEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerTakeExpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerTakeCoinEvent:
+    m_PersistentCalls:
+      m_Calls: []
   enemyKilledEvent:
     m_PersistentCalls:
       m_Calls:
@@ -22280,13 +22321,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  storeItemApproachEvent:
+  storeItemPurchaseEvent:
     m_PersistentCalls:
       m_Calls: []
-  storeItemLeaveEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  takeNewWeapon:
+  addNewWeaponEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &983513258
@@ -22807,9 +22845,13 @@ MonoBehaviour:
   killText: {fileID: 2072487629}
   coinText: {fileID: 1313723369}
   levelText: {fileID: 643505703}
+  waveText: {fileID: 0}
   activeWeaponImage: {fileID: 1900226483}
+  activeWeaponCooltimeText: {fileID: 0}
+  activeWeaponCooltimeImage: {fileID: 0}
   weaponSlot: {fileID: 476245447}
   accessorySlot: {fileID: 1168154170}
+  escapeStoreButton: {fileID: 0}
 --- !u!114 &1008974516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23245,6 +23287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  prices: 
+  descriptions: []
+  storeItemDescriptionPrefab: {fileID: 0}
 --- !u!50 &1057649394
 Rigidbody2D:
   serializedVersion: 4
@@ -33622,12 +33667,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5203405299000620634, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848944443627461945, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
+      propertyPath: _bulletCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5848944443627461945, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
       propertyPath: _bulletPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 212407374056040056, guid: efc3d262d77c2bd4cac078c7911c7f50, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8666528365161364284, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -38086,11 +38135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef4369f8ea58ea478ce9b014df13428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storeItems:
-  - {fileID: 1057649392}
-  - {fileID: 152607462}
-  - {fileID: 113331151}
-  - {fileID: 218838788}
+  storeItemPrefabs: []
 --- !u!4 &1313807722
 Transform:
   m_ObjectHideFlags: 0
@@ -38165,7 +38210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ff1ba82636ae0459b0b26cc0cd7a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeItemID: 0
+  selectButton: []
+  gameStartButton: {fileID: 0}
+  activeWeaponDescriptionText: {fileID: 0}
 --- !u!114 &1317580682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38901,6 +38948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604c7e14fac8c1d408233cb97d505d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPatterns: []
+  _spawnTimes: []
 --- !u!1 &1411495471
 GameObject:
   m_ObjectHideFlags: 0
@@ -42720,7 +42769,10 @@ MonoBehaviour:
   playerController: {fileID: 959693407}
   timer: 0
   isShowDamage: 1
+  isClear: 0
   wave: 0
+  subWave: 0
+  isStoreEnd: 0
   killCount: 0
 --- !u!4 &1764432745
 Transform:
@@ -42841,6 +42893,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+      propertyPath: bulletCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+      propertyPath: _launchPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+      propertyPath: _launchPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+      propertyPath: bulletPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4027783587094365756, guid: d5aa151070900884997bdfd25f63ef14, type: 3}
     - target: {fileID: 3244322749520524831, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
       propertyPath: _bulletPrefabs.Array.data[0]
       value: 
@@ -47072,10 +47140,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefabs:
-  - {fileID: 448081398733586140, guid: 58867e612c5e5bb4895be9d03de3b7f7, type: 3}
   - {fileID: 1229694597218356168, guid: b685c7d9657c33646bb165ff5003623e, type: 3}
-  - {fileID: 3244322749520524829, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
+  - {fileID: 448081398733586140, guid: 58867e612c5e5bb4895be9d03de3b7f7, type: 3}
   - {fileID: 5203405299000620634, guid: 817068aa1f1283b4390d3b63e93539a0, type: 3}
+  - {fileID: 3244322749520524829, guid: cbc71c56ea6dfe749afde99430c0a634, type: 3}
   _activeWeaponPrefabs:
   - {fileID: 739507776}
   - {fileID: 59451955}
@@ -54523,15 +54591,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -168.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5790971
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54539,15 +54607,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3944519422820595326, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54561,9 +54629,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: bulletCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: _launchDelaySeconds
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: _launchPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: _launchPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 432760621}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: _launchPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: _launchPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917434501422319647, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: launchPatternFactory.DirectLaunchPattern._precision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8772518877068428642, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
       propertyPath: m_Name
       value: MaglevTrain_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8772518877068428642, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc830ea031cfa344bb155e15693219c, type: 3}
