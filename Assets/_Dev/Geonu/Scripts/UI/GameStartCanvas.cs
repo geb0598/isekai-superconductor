@@ -9,9 +9,17 @@ public class GameStartCanvas : MonoBehaviour
     public Button[] selectButton;
     public Button gameStartButton;
 
+    public Text activeWeaponDescriptionText;
+
     public void GameStart()
     {
         SceneManager.LoadScene("GeonuSampleScene", LoadSceneMode.Single);
+    }
+
+    public void UpdateActiveWeaponDescription(int id)
+    {
+        // not yet implemented
+        activeWeaponDescriptionText.text = string.Format("Name : {0}\n{1}", WeaponManager.instance.GetActiveWeapon(id).name, WeaponManager.instance.GetActiveWeapon(id).name);
     }
 
     public void SetSelectButtonInteractive(int buttonIndex)

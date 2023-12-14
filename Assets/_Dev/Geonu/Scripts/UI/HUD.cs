@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     public Text killText;
     public Text coinText;
     public Text levelText;
+    public Text waveText;
     public Image activeWeaponImage;
     public Text activeWeaponCooltimeText;
     public Image activeWeaponCooltimeImage;
@@ -30,7 +31,7 @@ public class HUD : MonoBehaviour
     // test
     private void Start()
     {
-        WeaponManager.instance.ActivateWeapon(0);
+        // WeaponManager.instance.ActivateWeapon(0);
     }
 
     private void OnEnable()
@@ -43,6 +44,7 @@ public class HUD : MonoBehaviour
         string weaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
         activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + weaponName).GetComponent<SpriteRenderer>().sprite;
         UpdateLevel();
+        UpdateWaveText();
     }
 
     private void Update()
@@ -86,6 +88,11 @@ public class HUD : MonoBehaviour
                 slot.transform.SetParent(accessorySlot.transform);
                 break;
         }
+    }
+
+    public void UpdateWaveText()
+    {
+        waveText.text = string.Format("Wave {0} - {1}", GameManager.GetInstance().wave, (GameManager.GetInstance().subWave - 1) % 5 + 1);
     }
 
     public void UpdateExpSlider(int amount)

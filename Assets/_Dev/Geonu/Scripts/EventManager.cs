@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public UnityEvent<int, int> gameTimerEvent;
     public UnityEvent waveStartEvent;
     public UnityEvent waveEndEvent;
+    public UnityEvent subWaveIncreaseEvent;
 
     [Header("PlayerManager")]
     public UnityEvent playerLevelUpEvent;

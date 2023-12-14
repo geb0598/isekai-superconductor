@@ -18,21 +18,26 @@ public class StoreItemDescription : MonoBehaviour
     private void Awake()
     {
         _rect = GetComponent<RectTransform>();
-        _offsetVector = new Vector3(-2f, 2f, 0);
     }
 
     private void UpdateDescription()
     {
-        // nameText.text = string.Format("Name : {0}", name);
-        // levelText.text = string.Format("Level : {0} -> {1}", curlevel, curlevel+1);
-        // descriptionText.text = string.Format();
-        // priceText.text = string.Format("{0}", price);
+        int level = WeaponManager.instance.GetWeapon(storeItem.GetComponent<StoreItem>().id).level;
+
+        nameText.text = string.Format("Name : {0}", storeItem.name.Replace("StoreItem", "").Replace("(Clone)", ""));
+        levelText.text = string.Format("Level : {0} -> {1}", level, level + 1);
+        descriptionText.text = storeItem.GetComponent<StoreItem>().descriptions[level];
+        priceText.text = string.Format("Price : {0} Coin",storeItem.GetComponent<StoreItem>().prices[level]);
     }
 
 
     private void Update()
     {
-        // if (level >= maxLevel) return;
+        if (PlayerManager.instance.player.transform.position.x - storeItem.transform.position.x > 0)
+            _offsetVector = new Vector3(-2f, 2f, 0);
+        else
+            _offsetVector = new Vector3(2f, 2f, 0);
+
         _rect.position = Camera.main.WorldToScreenPoint(storeItem.transform.position + _offsetVector);
 
         UpdateDescription();

@@ -26,12 +26,22 @@ public class GameManager : MonoBehaviour
     private float _waveCheckTimer;
     private bool _isInProgress;
 
+    private float _storeTime;
+    private float _waveTime;
+    private float _subWaveTime;
+
     [Header("HUD")]
     public int killCount;
 
     private void Awake()
     {
         _instance = this;
+
+        // initialize
+        _storeTime = 60f;
+        _waveTime = 300f;
+        _subWaveTime = 60f;
+
         StopGame();
     }
 
@@ -68,17 +78,20 @@ public class GameManager : MonoBehaviour
         _waveCheckTimer += Time.deltaTime;
         eventManager.gameTimerEvent.Invoke((int)timer / 60, (int)timer % 60);
 
-        if (timer >= subWave * 60f)
+        if (timer >= subWave * _subWaveTime)
         {
             subWave++;
+            eventManager.subWaveIncreaseEvent.Invoke();
+            Debug.Log("subWave ++"); // test
         }
 
-        if (_waveCheckTimer >= 180f)
+        if (_waveCheckTimer >= _waveTime)
         {
             wave++;
             _isInProgress = false;
-            _waveCheckTimer = 60f;
+            _waveCheckTimer = _storeTime;
             eventManager.waveEndEvent.Invoke();
+            Debug.Log("Wave ++"); // test
         }
     }
 

@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class StoreItem : DropItem
 {
-    public int index;
+    private int index;
+
     public int id;
-    public int price;
+    public int[] prices;
+    public string[] descriptions;
 
-    public StoreItemDescription storeItemDescription;
+    public GameObject storeItemDescriptionPrefab;
+    private GameObject _storeItemDescription;
 
-    private SpriteRenderer _spriteRenderer;
-
-    private void Awake()
+    public void Init(int index)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        this.index = index;
     }
 
-    public void Init(int id, Sprite sprite)
+    public void OnDestroy()
     {
-        this.id = id;
-        // price = WeaponManager.instance.GetWeapon(id).price[WeaponManager.instance.GetWeapon(id).level - 1]
-
-        _spriteRenderer.sprite = sprite;
+        Destroy(_storeItemDescription);
     }
 
     public override void Get()
     {
-        if (PlayerManager.instance.coin < price)
+        Debug.Log("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", ""));
+
+        if (PlayerManager.instance.coin < prices[0])
         {
-            // Not Enough Coin !!! Text instantiate -> Damage Text reuse.
+            NotEnoughCoin();
             return;
         }
 
@@ -48,20 +48,35 @@ public class StoreItem : DropItem
         GameManager.GetInstance().eventManager.storeItemPurchaseEvent.Invoke(index);
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void NotEnoughCoin()
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        Debug.Log("Not enough coin");
+        if (_storeItemDescription == null)
+        {
+            _storeItemDescription = Instantiate(storeItemDescriptionPrefab);
+            _storeItemDescription.GetComponentInChildren<StoreItemDescription>().storeItem = this.gameObject;
+        }
+        _storeItemDescription.GetComponentInChildren<StoreItemDescription>().priceText.color = Color.red;
+    }
+
+    // for description ui
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag("ItemGetter"))
             return;
 
-        storeItemDescription.storeItem = this.gameObject;
-        storeItemDescription.EnableDescription();
+        if (_storeItemDescription != null)
+            return;
+
+        _storeItemDescription = Instantiate(storeItemDescriptionPrefab);
+        _storeItemDescription.GetComponentInChildren<StoreItemDescription>().storeItem = this.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("ItemGetter"))
             return;
 
-        storeItemDescription.DisableDescription();
-    }*/
+        Destroy(_storeItemDescription);
+    }
 }
