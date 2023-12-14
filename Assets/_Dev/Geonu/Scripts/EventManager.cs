@@ -7,19 +7,25 @@ public class EventManager : MonoBehaviour
 {
     [Header("GameManager")]
     public UnityEvent<int, int> gameTimerEvent;
+    public UnityEvent waveStartEvent;
+    public UnityEvent waveEndEvent;
+    public UnityEvent subWaveIncreaseEvent;
+    public UnityEvent gameEndEvent;
 
     [Header("PlayerManager")]
-    public UnityEvent<int, int> playerLevelUpEvent;
-    public UnityEvent<int> playerGetExpEvent;
-    public UnityEvent<int> playerGetCoinEvent;
+    public UnityEvent playerLevelUpEvent;
+    public UnityEvent playerTakeDamageEvent;
+    public UnityEvent playerRestoreHealthPointsEvent;
+    public UnityEvent playerAddExtraHealthPointEvent;
+    public UnityEvent<int> playerTakeExpEvent;
+    public UnityEvent<int> playerTakeCoinEvent;
 
     [Header("Enemy")]
     public UnityEvent enemyKilledEvent;
 
     [Header("StoreItem")]
-    public UnityEvent<int> storeItemApproachEvent;
-    public UnityEvent storeItemLeaveEvent;
+    public UnityEvent<int> storeItemPurchaseEvent;
 
     [Header("WeaponManager")]
-    public UnityEvent<int, int> takeNewWeapon;
+    public UnityEvent<int, int> addNewWeaponEvent; // <type, id>
 }

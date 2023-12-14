@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: BlienStat
   m_EditorClassIdentifier: 
-  maxHp: 11
-  speed: 2.1
+  defaultMaxHp: 8
+  speed: 2.05
   knockBackCoefficient: 510
   attackSpeed: 1.2
-  bulletSpeed: 4.2

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    // ???
+    private static float[] healthPointCoefficients = { 1, 1.05f, 1.1f, 1.3f, 1.35f, 1.4f, 1.6f, 1.65f, 1.7f, 1.9f, 1.95f, 2, 2.2f, 2.25f, 2.3f };
+
     [SerializeField]
     protected EnemyStat _stat;
 
@@ -19,7 +22,7 @@ public class Enemy : MonoBehaviour
     private float _curHp;
 
     private float _invincibleTimer;
-    private float _invincibleTime = 0.5f; // test init
+    private float _invincibleTime;
     private bool _isInvincible;
 
     private void Awake()
@@ -32,6 +35,8 @@ public class Enemy : MonoBehaviour
         _waitForFixedUpdate = new WaitForFixedUpdate();
 
         _animator.SetBool("isMoving", true);
+
+        _invincibleTime = 0.1f;
     }
 
     virtual protected void FixedUpdate()
@@ -95,7 +100,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void Init()
     {
-        _curHp = this._stat.maxHp;
+        _curHp = this._stat.defaultMaxHp * healthPointCoefficients[GameManager.GetInstance().subWave];
     }
 
     public void TakeDamage(float damage)
@@ -162,7 +167,7 @@ public class Enemy : MonoBehaviour
             return;
         if (damage <= 0)
             return;
-        GameObject damageText = GameManager.GetInstance().poolManager.Get(2, 3);
+        GameObject damageText = GameManager.GetInstance().poolManager.Get(2, 1);
         damageText.GetComponent<DamageText>().Init(damage, transform);
     }
 }

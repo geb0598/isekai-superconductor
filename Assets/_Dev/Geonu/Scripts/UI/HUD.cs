@@ -11,33 +11,53 @@ public class HUD : MonoBehaviour
     public Text killText;
     public Text coinText;
     public Text levelText;
+    public Text waveText;
     public Image activeWeaponImage;
+    public Text activeWeaponCooltimeText;
+    public Image activeWeaponCooltimeImage;
     public GridLayoutGroup weaponSlot;
     public GridLayoutGroup accessorySlot;
 
-    private int _curHealthPoint;
-    private int _maxHealthPoint;
+    public Button escapeStoreButton;
 
-    private int _killCount;
-    private int _coinCount;
-    private int _levelCount;
+    private Canvas canvas;
+
+
+    private void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+    }
+
+    // test
+    private void Start()
+    {
+        // WeaponManager.instance.ActivateWeapon(0);
+    }
 
     private void OnEnable()
     {
-        // Read From GameManager
-        _killCount = 0;
-        _coinCount = 0;
-        _levelCount = 0;
-
         // initate
-        killText.text = _killCount.ToString();
-        coinText.text = _coinCount.ToString();
-        levelText.text = string.Format("Lv.{0}", _levelCount);
+        killText.text = GameManager.GetInstance().killCount.ToString();
+        coinText.text = PlayerManager.instance.coin.ToString();
 
         // not yet implemented
         string weaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
         activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + weaponName).GetComponent<SpriteRenderer>().sprite;
-        UpdateLevel(PlayerManager.instance.experiencePoints, PlayerManager.instance.experiencePointsRequired);
+        UpdateLevel();
+        UpdateWaveText();
+    }
+
+    private void Update()
+    {
+        float remainingCooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).remainingCooldownTime;
+        if (remainingCooldownTime == 0)
+        {
+            activeWeaponCooltimeImage.fillAmount = 0;
+            return;
+        }
+
+        float cooldownTime = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).attackDelaySeconds;
+        activeWeaponCooltimeImage.fillAmount = (cooldownTime - remainingCooldownTime) / cooldownTime;
     }
 
     // weapon¿¡¼­ event invoke
@@ -48,8 +68,8 @@ public class HUD : MonoBehaviour
         GameObject slot;
 
         switch (type)
-        {            
-            // weapon(0) or activeWeapon(2)
+        {
+            // weapon(0) or activeWeapon(2).
             case 0:
             case 2:
                 string weaponName = WeaponManager.instance.GetWeapon(id).name;
@@ -70,17 +90,21 @@ public class HUD : MonoBehaviour
         }
     }
 
+    public void UpdateWaveText()
+    {
+        waveText.text = string.Format("Wave {0} - {1}", GameManager.GetInstance().wave, (GameManager.GetInstance().subWave - 1) % 5 + 1);
+    }
+
     public void UpdateExpSlider(int amount)
     {
         expSlider.value += amount;
     }
 
-    public void UpdateLevel(int curExp, int maxExp)
+    public void UpdateLevel()
     {
-        expSlider.value = curExp;
-        expSlider.maxValue = maxExp;
-        _levelCount++;
-        levelText.text = string.Format("Lv.{0}", _levelCount);
+        expSlider.value = PlayerManager.instance.experiencePoints;
+        expSlider.maxValue = PlayerManager.instance.experiencePointsRequired;
+        levelText.text = string.Format("Lv. {0}", PlayerManager.instance.level);
     }
 
     public void UpdateTimer(int minute, int second)
@@ -93,33 +117,33 @@ public class HUD : MonoBehaviour
         switch (amount)
         {
             case -1:
-                _curHealthPoint--;
-                healthPoint[_curHealthPoint].color = Color.gray;
+                healthPoint[PlayerManager.instance.healthPoints - 1].color = Color.gray;
                 break;
 
             case 1:
-                healthPoint[_curHealthPoint].color = Color.white;
-                _curHealthPoint++;
+                healthPoint[PlayerManager.instance.healthPoints - 1].color = Color.white;
                 break;
         }
     }
 
     public void UpdateMaxHealthPoint()
     {
-        healthPoint[_maxHealthPoint].color = Color.white;
-        _maxHealthPoint++;
+        if (PlayerManager.instance.maxHealthPoints < 1)
+            return;
+        healthPoint[PlayerManager.instance.maxHealthPoints - 1].color = Color.white;
+
+        if (!(PlayerManager.instance.healthPoints == PlayerManager.instance.maxHealthPoints))
+            healthPoint[PlayerManager.instance.maxHealthPoints - 1].color = Color.gray;
     }
 
     public void UpdateKill()
     {
-        _killCount++;
-        killText.text = string.Format("{0}", _killCount);
+        killText.text = string.Format("{0}", GameManager.GetInstance().killCount);
     }
 
     public void UpdateCoin(int amount)
     {
-        _coinCount += amount;
-        coinText.text = string.Format("{0}", _coinCount);
+        coinText.text = string.Format("{0}", PlayerManager.instance.coin);
     }
 
     public void EnableUI()
@@ -127,8 +151,29 @@ public class HUD : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void DisableUI()
+    public void DrawFront()
     {
-        gameObject.SetActive(false);
+        canvas.sortingOrder = 0;
+    }
+
+    public void SendBack()
+    {
+        canvas.sortingOrder = -1;
+    }
+
+    public void EnableEscapeStoreButton()
+    {
+        escapeStoreButton.gameObject.SetActive(true);
+    }
+
+    public void DisableEscapeStoreButton()
+    {
+        escapeStoreButton.gameObject.SetActive(false);
+    }
+
+    public void OnEscapeStoreButtonClicked()
+    {
+        GameManager.GetInstance().isStoreEnd = true;
+        GameManager.GetInstance().eventManager.waveStartEvent.Invoke();
     }
 }

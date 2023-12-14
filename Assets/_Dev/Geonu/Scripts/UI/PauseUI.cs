@@ -17,6 +17,14 @@ public class PauseUI : MonoBehaviour
     private List<int> _weaponLevelsArray;
     private int _weaponCount;
 
+    private Canvas canvas;
+    private CanvasGroup canvasGroup;
+
+    private void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     private void Update()
     {
@@ -35,7 +43,6 @@ public class PauseUI : MonoBehaviour
             return;
         }
 
-        Debug.Log(weaponIndex);
         weaponLevelsImage[weaponIndex].MiniLevel[_weaponLevelsArray[weaponIndex]].color = Color.black;
 
         _weaponLevelsArray[weaponIndex]++;
@@ -71,13 +78,22 @@ public class PauseUI : MonoBehaviour
     public void EnablePauseUI()
     {
         gameObject.SetActive(true);
+        TransparentUI();
     }
 
-    public void DisablePauseUI()
+    public void TransparentUI()
     {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvas.sortingOrder = -1;
     }
 
+    public void UndoTransparentUI()
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvas.sortingOrder = 0;
+    }
 }
 
 

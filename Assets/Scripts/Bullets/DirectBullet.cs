@@ -34,14 +34,14 @@ public class DirectBullet : Bullet
             return;
         }
 
-        if (_collisionEffect != null && collision.gameObject.CompareTag("Enemy"))
+        if (_isPlayerBullet && _collisionEffect != null && collision.gameObject.CompareTag("Enemy"))
         {
             Instantiate(_collisionEffect, collision.transform.position, Quaternion.identity);
         }
 
         ApplyDamage(collision);
 
-        if (!_isPenetrative && collision.gameObject.CompareTag("Enemy"))
+        if (_isPlayerBullet && !_isPenetrative && collision.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(GenerateBullets(collision));
         }

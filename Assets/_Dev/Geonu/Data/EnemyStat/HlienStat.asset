@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05658ce221b9a4d44b1922ed2a88654b, type: 3}
   m_Name: HlienStat
   m_EditorClassIdentifier: 
-  maxHp: 17
-  speed: 2.7
-  knockBackCoefficient: 570
+  defaultMaxHp: 12.5
+  speed: 2.55
+  knockBackCoefficient: 710
   attackSpeed: 0
-  bulletSpeed: 0

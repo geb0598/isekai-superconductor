@@ -2,6 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum EnemyIndices
+{
+    Alien, // from here, ranged enemy
+    Blien,
+    Clien,
+    Dlien,
+    Elien,
+    Flien,
+    Glien = 10, // from here, melee enemy
+    Hlien,
+    Ilien,
+    Jlien,
+    Klien,
+    Llien
+}
+
 public class PoolManager : MonoBehaviour
 {
     [System.Serializable]
@@ -29,7 +46,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public GameObject Get(int type,int index) // type: 0 = meleeEnemy, 1 = rangeEnemy, 2 = others
+    public GameObject Get(int type,int index) // type: ragnedEnemy = 0, meleeEnemy = 1 , others = 2
     {
         if (index >= _pools[type].Length)
         {

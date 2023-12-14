@@ -15,8 +15,20 @@ public class GameManager : MonoBehaviour
     public float timer;
 
     public bool isShowDamage;
+    public bool isClear;
 
+    [Header("WaveManagement")]
     public int wave;
+    public int subWave;
+
+    public bool isStoreEnd;
+
+    private float _waveCheckTimer;
+    private bool _isInProgress;
+
+    private float _storeTime;
+    private float _waveTime;
+    private float _subWaveTime;
 
     [Header("HUD")]
     public int killCount;
@@ -24,6 +36,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+
+        // initialize
+        _storeTime = 60f;
+        _waveTime = 300f;
+        _subWaveTime = 60f;
+
         StopGame();
     }
 
@@ -41,8 +59,45 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // test
+        if (PlayerManager.instance.isDead)
+            eventManager.gameEndEvent.Invoke();
+        // test end
+
+        if (!_isInProgress)
+        {
+            _waveCheckTimer -= Time.deltaTime;
+            eventManager.gameTimerEvent.Invoke((int)_waveCheckTimer / 60, (int)_waveCheckTimer % 60);
+
+            if (_waveCheckTimer <= 0f  || isStoreEnd )
+            {
+                _waveCheckTimer = 0f;
+                _isInProgress = true;
+                isStoreEnd = false;
+                eventManager.waveStartEvent.Invoke();
+            }
+            return;
+        }
+
         timer += Time.deltaTime;
+        _waveCheckTimer += Time.deltaTime;
         eventManager.gameTimerEvent.Invoke((int)timer / 60, (int)timer % 60);
+
+        if (timer >= subWave * _subWaveTime)
+        {
+            subWave++;
+            eventManager.subWaveIncreaseEvent.Invoke();
+            Debug.Log("subWave ++"); // test
+        }
+
+        if (_waveCheckTimer >= _waveTime)
+        {
+            wave++;
+            _isInProgress = false;
+            _waveCheckTimer = _storeTime;
+            eventManager.waveEndEvent.Invoke();
+            Debug.Log("Wave ++"); // test
+        }
     }
 
     public void StopGame()
@@ -55,8 +110,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void ResetGame()
+    {
+        timer = 0f;
+    }
+
     public void SetIsShowDamage(bool isShowDamage)
     {
         this.isShowDamage = isShowDamage;
+    }
+
+    public void AddKillCount()
+    {
+        killCount++;
     }
 }
