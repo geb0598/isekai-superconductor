@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : PooledObject
 {
+    public DamageText damageTextPrefab;
+    public Coin coinPrefab;
+
     // ???
     private static float[] healthPointCoefficients = { 1, 1.05f, 1.1f, 1.3f, 1.35f, 1.4f, 1.6f, 1.65f, 1.7f, 1.9f, 1.95f, 2, 2.2f, 2.25f, 2.3f };
 
@@ -156,7 +159,7 @@ public class Enemy : MonoBehaviour
         else
             ratio = 1;
 
-        Coin coin = GameManager.GetInstance().poolManager.Get(2, 0).GetComponent<Coin>();
+        Coin coin = coinPrefab.GetPooledObject().GetComponent<Coin>();
         coin.transform.position = transform.position;
         coin.Init(Mathf.FloorToInt(amount * ratio));
     }
@@ -167,7 +170,7 @@ public class Enemy : MonoBehaviour
             return;
         if (damage <= 0)
             return;
-        GameObject damageText = GameManager.GetInstance().poolManager.Get(2, 1);
-        damageText.GetComponent<DamageText>().Init(damage, transform);
+        DamageText damageText = damageTextPrefab.GetPooledObject().GetComponent<DamageText>();
+        damageText.Init(damage, transform);
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
-    public GameObject[] storeItemPrefabs;
+    public GameObject[] storeItemWeaponPrefabs;
+    public GameObject[] storeItemActiveWeaponPrefabs;
 
     private GameObject[] _storeItems;
     private GameObject[] _storeItemTransforms;
@@ -15,7 +16,8 @@ public class Store : MonoBehaviour
 
     private void Awake()
     {
-        storeItemPrefabs.OrderBy(w => w.GetComponent<StoreItem>().id);
+        storeItemWeaponPrefabs = storeItemWeaponPrefabs.OrderBy(w => w.GetComponent<StoreItem>().id).ToArray();
+        storeItemActiveWeaponPrefabs = storeItemActiveWeaponPrefabs.OrderBy(w => w.GetComponent<StoreItem>().id).ToArray();
 
         _playerRigidbody2D = GameManager.GetInstance().playerController.GetComponent<Rigidbody2D>();
         _storeItems = new GameObject[6];
@@ -56,10 +58,21 @@ public class Store : MonoBehaviour
 
     public GameObject CreateStoreItem()
     {
-        // max level check
-        int newWeaponId = Random.Range(0, storeItemPrefabs.Length);
+        GameObject storeItem;
+        int random = Random.Range(0, 2);
 
-        GameObject storeItem = Instantiate(storeItemPrefabs[newWeaponId]);
+        if (random == 0)
+        {
+            storeItem = Instantiate(storeItemActiveWeaponPrefabs[WeaponManager.instance.selectedActiveWeaponId]);
+        }
+
+        else
+        {
+            // max level check
+            int newWeaponId = Random.Range(0, storeItemWeaponPrefabs.Length);
+
+            storeItem = Instantiate(storeItemWeaponPrefabs[newWeaponId]);
+        }
         return storeItem;
     }
 

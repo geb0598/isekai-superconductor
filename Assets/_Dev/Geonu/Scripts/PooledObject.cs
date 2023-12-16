@@ -7,12 +7,12 @@ public class PooledObject : MonoBehaviour
     public int type;
     public int id;
 
-    public GameObject Get()
+    public GameObject GetPooledObject()
     {
         return GameManager.GetInstance().poolManager.Get(type, id);
     }
 
-    public void Return()
+    public void ReturnPooledObject()
     {
         gameObject.SetActive(false);
     }

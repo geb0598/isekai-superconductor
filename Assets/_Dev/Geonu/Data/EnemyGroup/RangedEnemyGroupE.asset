@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492a7675a78ceda47a6ce942ed2ae66c, type: 3}
   m_Name: RangedEnemyGroupE
   m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 1572360697454378201, guid: 3bb7bb6d5c62af24e8197b5d1b5fea2d, type: 3}
+  - {fileID: 607927693933831622, guid: 0d98abfe4e275ae4ea6e0e971ae259b8, type: 3}
+  - {fileID: 6086692167771125492, guid: 63344257fc70c5b40888e26068c408f3, type: 3}
   enemies: 030000000400000005000000
   probabilities:
   - 0.4

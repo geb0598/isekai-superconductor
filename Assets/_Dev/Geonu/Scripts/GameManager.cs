@@ -60,8 +60,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // test
-        if (PlayerManager.instance.isDead)
+        if (PlayerManager.instance.isDead || timer >= 900)
+        {
+            if (timer >= 900)
+                isClear = true;
+
             eventManager.gameEndEvent.Invoke();
+        }
         // test end
 
         if (!_isInProgress)

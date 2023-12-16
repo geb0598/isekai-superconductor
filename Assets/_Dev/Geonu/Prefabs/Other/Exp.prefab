@@ -136,3 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c198872b5ad4a44868d41700a752e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 2
+  id: 2
+  sprites:
+  - {fileID: 362616440, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  - {fileID: 1807624531, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  - {fileID: -1997803578, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  _amounts: 01000000040000000f000000

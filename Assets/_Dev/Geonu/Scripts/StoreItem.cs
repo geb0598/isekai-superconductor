@@ -6,7 +6,6 @@ public class StoreItem : DropItem
 {
     private int index;
 
-    public int id;
     public int[] prices;
     public string[] descriptions;
 
@@ -27,7 +26,7 @@ public class StoreItem : DropItem
     {
         Debug.Log("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", ""));
 
-        if (PlayerManager.instance.coin < prices[0])
+        if (PlayerManager.instance.coin < prices[WeaponManager.instance.GetActiveWeapon(id).level])
         {
             NotEnoughCoin();
             return;
