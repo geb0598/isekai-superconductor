@@ -24,17 +24,16 @@ public class StoreItem : DropItem
 
     public override void Get()
     {
+        int level = (type == 0) ? WeaponManager.instance.GetWeapon(id).level : WeaponManager.instance.GetActiveWeapon(id).level;
         Debug.Log("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", ""));
 
-        if (PlayerManager.instance.coin < prices[WeaponManager.instance.GetActiveWeapon(id).level])
+        if (PlayerManager.instance.coin < prices[level])
         {
             NotEnoughCoin();
             return;
         }
 
-        gameObject.SetActive(false);
-
-        if (WeaponManager.instance.GetWeaponPrefab(id).activeSelf)
+        if (level >= 1)
         {
             WeaponManager.instance.LevelUp(id);
         }
@@ -61,7 +60,7 @@ public class StoreItem : DropItem
     // for description ui
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("ItemGetter"))
+        if (!collision.gameObject.CompareTag("StoreItemDescriptionTrigger"))
             return;
 
         if (_storeItemDescription != null)
@@ -73,7 +72,7 @@ public class StoreItem : DropItem
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("ItemGetter"))
+        if (!collision.gameObject.CompareTag("StoreItemDescriptionTrigger"))
             return;
 
         Destroy(_storeItemDescription);

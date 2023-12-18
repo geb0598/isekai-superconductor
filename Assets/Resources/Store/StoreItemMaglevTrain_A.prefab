@@ -148,8 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   id: 2
-  prices: 0000000000000000
+  prices: 0000000000000000000000000000000000000000000000000000000000000000
   descriptions:
+  - empty4
+  - empty4
+  - empty4
+  - empty4
+  - empty4
+  - empty4
   - empty4
   - empty4
   storeItemDescriptionPrefab: {fileID: 1638925574783661598, guid: 0077e99c03900784b81ef015a1244aef, type: 3}

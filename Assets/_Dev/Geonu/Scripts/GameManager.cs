@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
         _waveTime = 300f;
         _subWaveTime = 60f;
 
+        _isInProgress = false;
+        _waveCheckTimer = _storeTime;
+
         StopGame();
     }
 

@@ -27,7 +27,7 @@ public class AreaBullet : Bullet
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Test");
+        // Debug.Log("Test");
         ApplyDamage(collision);
     }
 }

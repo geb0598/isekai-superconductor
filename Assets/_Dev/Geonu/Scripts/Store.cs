@@ -59,7 +59,7 @@ public class Store : MonoBehaviour
     public GameObject CreateStoreItem()
     {
         GameObject storeItem;
-        int random = Random.Range(0, 2);
+        int random = Random.Range(0, storeItemWeaponPrefabs.Length + 1);
 
         if (random == 0)
         {
@@ -78,6 +78,7 @@ public class Store : MonoBehaviour
 
     public void DestroyStoreItem(int index)
     {
+        Debug.Log(string.Format("purchased item index: {0}", index));
         Destroy(_storeItems[index]);
         _storeItems[index] = null;
         _disabledIndex = index;
@@ -86,6 +87,8 @@ public class Store : MonoBehaviour
     public void CreateNewStoreItem()
     {
         GameObject newStoreItem = CreateStoreItem();
+        newStoreItem.GetComponent<StoreItem>().Init(_disabledIndex);
+        Debug.Log(string.Format("new item index: {0}", _disabledIndex));
         _storeItems[_disabledIndex] = newStoreItem;
         _storeItems[_disabledIndex].GetComponent<Rigidbody2D>().position = _storeItemTransforms[_disabledIndex].GetComponent<Transform>().position;
     }
