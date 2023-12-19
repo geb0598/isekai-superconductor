@@ -6,6 +6,7 @@ public class Enemy : PooledObject
 {
     public DamageText damageTextPrefab;
     public Coin coinPrefab;
+    public HealthPack healthPackPrefab;
 
     // ???
     private static float[] healthPointCoefficients = { 1, 1.05f, 1.1f, 1.3f, 1.35f, 1.4f, 1.6f, 1.65f, 1.7f, 1.9f, 1.95f, 2, 2.2f, 2.25f, 2.3f };
@@ -142,6 +143,7 @@ public class Enemy : PooledObject
     {
         _isLive = false;
         DropCoin();
+        DropHealthPack();
         GameManager.GetInstance().eventManager.enemyKilledEvent.Invoke();
         gameObject.SetActive(false);
     }
@@ -162,6 +164,17 @@ public class Enemy : PooledObject
         Coin coin = coinPrefab.GetPooledObject().GetComponent<Coin>();
         coin.transform.position = transform.position;
         coin.Init(Mathf.FloorToInt(amount * ratio));
+    }
+
+    private void DropHealthPack()
+    {
+        float random = Random.Range(0f, 1f);
+
+        if (random <= 0.01f)
+        {
+            HealthPack healthPack = Instantiate(healthPackPrefab);
+            healthPack.transform.position = transform.position;
+        }
     }
 
     private void ShowDamage(float damage)

@@ -27,5 +27,6 @@ public class EventManager : MonoBehaviour
     public UnityEvent<int> storeItemPurchaseEvent;
 
     [Header("WeaponManager")]
-    public UnityEvent<int, int> addNewWeaponEvent; // <type, id>
+    public UnityEvent<int, int> addNewWeaponEvent;
+    public UnityEvent<int, int> weaponLevelUpEvent;
 }

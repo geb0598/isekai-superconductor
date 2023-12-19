@@ -148,14 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   id: 1
-  prices: 0000000001000000010000000100000001000000010000000100000001000000
+  prices: 64000000c80000002c010000f401000058020000bc02000020030000e8030000
   descriptions:
-  - empty
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
+  - Get Weapon
+  - Damage Increase
+  - Damage Increase
+  - Upgrade Weapon
+  - Damage Increase
+  - Damage Increase
+  - Damage Increase
+  - Upgrade Weapon
   storeItemDescriptionPrefab: {fileID: 1638925574783661598, guid: 0077e99c03900784b81ef015a1244aef, type: 3}

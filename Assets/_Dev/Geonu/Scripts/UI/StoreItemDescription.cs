@@ -32,6 +32,8 @@ public class StoreItemDescription : MonoBehaviour
         levelText.text = string.Format("Level : {0} -> {1}", level, level + 1);
         descriptionText.text = storeItem.GetComponent<StoreItem>().descriptions[level];
         priceText.text = string.Format("Price : {0} Coin",storeItem.GetComponent<StoreItem>().prices[level]);
+
+        Debug.Log(string.Format("Description : {0} Weapon Level = {1}", nameText.text, level));
     }
 
 

@@ -25,7 +25,7 @@ public class StoreItem : DropItem
     public override void Get()
     {
         int level = (type == 0) ? WeaponManager.instance.GetWeapon(id).level : WeaponManager.instance.GetActiveWeapon(id).level;
-        Debug.Log("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", ""));
+        Debug.Log(string.Format("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", "") + "level: {0}", level));
 
         if (PlayerManager.instance.coin < prices[level])
         {
@@ -35,7 +35,11 @@ public class StoreItem : DropItem
 
         if (level >= 1)
         {
-            WeaponManager.instance.LevelUp(id);
+            if (type == 0)
+                WeaponManager.instance.GetWeapon(id).LevelUp();
+            else
+                WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).LevelUp();
+            GameManager.GetInstance().eventManager.weaponLevelUpEvent.Invoke(type, id);
         }
 
         else
@@ -44,6 +48,7 @@ public class StoreItem : DropItem
         }
         
         GameManager.GetInstance().eventManager.storeItemPurchaseEvent.Invoke(index);
+        PlayerManager.instance.AddCoin(-prices[level]);
     }
 
     private void NotEnoughCoin()

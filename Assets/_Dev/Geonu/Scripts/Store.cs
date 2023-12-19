@@ -78,7 +78,6 @@ public class Store : MonoBehaviour
 
     public void DestroyStoreItem(int index)
     {
-        Debug.Log(string.Format("purchased item index: {0}", index));
         Destroy(_storeItems[index]);
         _storeItems[index] = null;
         _disabledIndex = index;
@@ -88,7 +87,6 @@ public class Store : MonoBehaviour
     {
         GameObject newStoreItem = CreateStoreItem();
         newStoreItem.GetComponent<StoreItem>().Init(_disabledIndex);
-        Debug.Log(string.Format("new item index: {0}", _disabledIndex));
         _storeItems[_disabledIndex] = newStoreItem;
         _storeItems[_disabledIndex].GetComponent<Rigidbody2D>().position = _storeItemTransforms[_disabledIndex].GetComponent<Transform>().position;
     }

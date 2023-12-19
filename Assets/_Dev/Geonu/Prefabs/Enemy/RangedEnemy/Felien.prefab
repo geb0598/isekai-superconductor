@@ -475,4 +475,5 @@ MonoBehaviour:
   id: 5
   damageTextPrefab: {fileID: 8614055658727977489, guid: 30e1b829d47fb6140b4ae7bf6e6c817e, type: 3}
   coinPrefab: {fileID: 7862863536348390588, guid: ba1a319888def854b996dca0b831f55e, type: 3}
+  healthPackPrefab: {fileID: -6086131063609083033, guid: a8d8d9b6d5f28c44db176e74c1afcbb5, type: 3}
   _stat: {fileID: 11400000, guid: b0c2f06552ce86649902c4e3cc8c3b4b, type: 2}

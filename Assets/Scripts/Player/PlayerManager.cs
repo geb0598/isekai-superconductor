@@ -108,6 +108,7 @@ public class PlayerManager : MonoBehaviour
     public void AddCoin(int amount)
     {
         _coin += amount;
+        GameManager.GetInstance().eventManager.playerTakeCoinEvent.Invoke(amount);
     }
 
     public void LevelUp()
@@ -142,7 +143,7 @@ public class PlayerManager : MonoBehaviour
 
         _healthPoints = _defaultHealthPoints;
         _extraHealthPoints = 0;
-        _coin = 0;
+        _coin = 500; // start coin
         _level = 1;
         _experiencePoints = 0;
         _isInvincible = false;
