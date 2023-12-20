@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 680127950, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1044071011, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 1968902660, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 1968902660, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -409,10 +409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _launchPoints: []
+  _launchDelaySeconds: 0
   _bulletPrefabs:
   - {fileID: 4027783587094365756, guid: eebc369accb912945b4b18d674ac3f3e, type: 3}
   _bulletCount: 5
-  _launchDelaySeconds: 0
   launchPatternFactory:
     Type: 0
     DirectLaunchPattern:
@@ -470,4 +471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcb2e4c24d2e4044a673955c530e6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  id: 2
+  damageTextPrefab: {fileID: 8614055658727977489, guid: 30e1b829d47fb6140b4ae7bf6e6c817e, type: 3}
+  coinPrefab: {fileID: 7862863536348390588, guid: ba1a319888def854b996dca0b831f55e, type: 3}
+  healthPackPrefab: {fileID: -6086131063609083033, guid: a8d8d9b6d5f28c44db176e74c1afcbb5, type: 3}
   _stat: {fileID: 11400000, guid: 5770adc7f85351945b8666572ed3ae8b, type: 2}

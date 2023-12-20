@@ -22,12 +22,22 @@ public class StoreItemDescription : MonoBehaviour
 
     private void UpdateDescription()
     {
-        int level = WeaponManager.instance.GetWeapon(storeItem.GetComponent<StoreItem>().id).level;
+        int level;
 
-        nameText.text = string.Format("Name : {0}", storeItem.name.Replace("StoreItem", "").Replace("(Clone)", ""));
+        if (storeItem.GetComponent<StoreItem>().type == 0)
+            level = WeaponManager.instance.GetWeapon(storeItem.GetComponent<StoreItem>().id).level;
+        else 
+            level = WeaponManager.instance.GetActiveWeapon(storeItem.GetComponent<StoreItem>().id).level;
+
+        nameText.text = string.Format("Name : {0}", storeItem.name.Replace("StoreItem", "").Replace("(Clone)", "")).Replace("_A", "");
         levelText.text = string.Format("Level : {0} -> {1}", level, level + 1);
         descriptionText.text = storeItem.GetComponent<StoreItem>().descriptions[level];
         priceText.text = string.Format("Price : {0} Coin",storeItem.GetComponent<StoreItem>().prices[level]);
+
+        if (level == 8)
+        {
+            levelText.text = string.Format("Level : Level MAX");
+        }
     }
 
 

@@ -67,10 +67,10 @@ public class SpawnPattern
             for (int j = 0; j < spawnPoints.spawnCounts[i] * GameManager.GetInstance().wave; j++)
             {
                 int index = SelectIndexWithProbabilities(enemyGroup.probabilities);
-                GameObject enemy = GameManager.GetInstance().poolManager.Get(enemyGroup.enemies[index] / 10, enemyGroup.enemies[index] % 10);
+                Enemy enemy = enemyGroup.enemyPrefabs[index].GetPooledObject().GetComponent<Enemy>();
 
                 enemy.transform.position = _spawnPoints[spawnPoints.spawnPointsIndices[i]].position;
-                enemy.GetComponent<Enemy>().Init();
+                enemy.Init();
             }
         }
     }

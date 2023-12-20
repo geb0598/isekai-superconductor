@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpawnPointsH
   m_EditorClassIdentifier: 
   spawnPointsIndices: 0d00000021000000230000001a000000
-  spawnCounts: 02000000020000000200000002000000
+  spawnCounts: 01000000010000000100000001000000

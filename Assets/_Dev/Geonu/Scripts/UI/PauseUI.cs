@@ -13,9 +13,14 @@ public class PauseUI : MonoBehaviour
     public List<GameObject> weaponLevels;
     public MiniLevels[] weaponLevelsImage;
 
+    public Image activeWeaponImage;
+    public MiniLevels activeWeaponLevelsImage;
+
     private List<int> _weaponsID;
     private List<int> _weaponLevelsArray;
     private int _weaponCount;
+
+    private int _activeWeaponLevel;
 
     private Canvas canvas;
     private CanvasGroup canvasGroup;
@@ -24,6 +29,8 @@ public class PauseUI : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+        SetActiveWeaponImage();
+        _activeWeaponLevel = 1;
     }
 
     private void Update()
@@ -33,8 +40,16 @@ public class PauseUI : MonoBehaviour
         powerText.text = string.Format("Power : {0}", PlayerManager.instance.power);
     }
 
-    public void WeaponLevelUp(int id)
+    public void WeaponLevelUp(int type, int id)
     {
+        if (type == 1)
+        {
+            activeWeaponLevelsImage.MiniLevel[_activeWeaponLevel].color = Color.black;
+            _activeWeaponLevel++;
+
+            return;
+        }
+
         int weaponIndex = _weaponsID.IndexOf(id);
 
         if (weaponIndex == -1)
@@ -69,10 +84,16 @@ public class PauseUI : MonoBehaviour
 
         _weaponsID.Add(id);
         _weaponLevelsArray.Add(0);
-        WeaponLevelUp(id);
+        WeaponLevelUp(type, id);
 
         weaponLevels[_weaponCount].SetActive(true);
         _weaponCount++;
+    }
+
+    public void SetActiveWeaponImage()
+    {
+        string activeWeaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
+        activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + activeWeaponName).GetComponent<SpriteRenderer>().sprite;
     }
 
     public void EnablePauseUI()

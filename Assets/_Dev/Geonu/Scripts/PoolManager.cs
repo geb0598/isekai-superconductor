@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -33,6 +34,11 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            prefabs[i].prefabs = prefabs[i].prefabs.OrderBy(w => w.GetComponent<PooledObject>().id).ToList();
+        }
+
         _pools = new List<GameObject>[prefabs.Count][];
 
         for (int i = 0; i < prefabs.Count; i++)

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 2081703504, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 552397049
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: -1155940449, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -275,4 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596bf92bedc4b8843802bae5ee36b053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  id: 0
+  damageTextPrefab: {fileID: 8614055658727977489, guid: 30e1b829d47fb6140b4ae7bf6e6c817e, type: 3}
+  coinPrefab: {fileID: 7862863536348390588, guid: ba1a319888def854b996dca0b831f55e, type: 3}
+  healthPackPrefab: {fileID: -6086131063609083033, guid: a8d8d9b6d5f28c44db176e74c1afcbb5, type: 3}
   _stat: {fileID: 11400000, guid: ae8e246952bb6594c82aead1e2e4033a, type: 2}

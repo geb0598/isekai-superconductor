@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4027783587094365756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4096993, y: 1.3698761, z: 1.9857836}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9082117149239851740}
@@ -87,7 +87,9 @@ MonoBehaviour:
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 5
-  _speed: 7
+  _hasNoDamage: 0
+  id: 0
+  _speed: 5
   _isPenetrative: 0
 --- !u!1 &8588262972790874144
 GameObject:

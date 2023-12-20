@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GrazePoint : MonoBehaviour
 {
+    [SerializeField] Exp _expPrefab;
+
     [SerializeField] float _minExpGenerationRange;
     [SerializeField] float _maxExpGenerationRange;
 
@@ -22,8 +24,24 @@ public class GrazePoint : MonoBehaviour
         Vector2 direction = Random.insideUnitCircle.normalized;
         Vector2 position = (Vector2)transform.position + length * direction;
 
-        Exp exp = GameManager.GetInstance().poolManager.Get(2, 2).GetComponent<Exp>();
+        Exp exp = _expPrefab.GetPooledObject().GetComponent<Exp>();
         exp.transform.position = position;
-        exp.Init(1);
+
+        exp.Init(RandomAmountGenerator());
+    }
+
+    private int RandomAmountGenerator()
+    {
+        int amount;
+        float x = Random.Range(0f, 1f);
+
+        if (x <= 0.1)
+            amount = 2;
+        else if (x <= 0.3)
+            amount = 1;
+        else
+            amount = 0;
+
+        return amount;
     }
 }

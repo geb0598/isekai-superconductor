@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   _levelLimit: 8
-  _defaultPower: 5
-  _powerScaleFactor: 3
+  _defaultPower: 8
+  _powerScaleFactor: 4
   _defaultAttackDelaySeconds: 7.5
   _defaultAttackSpeed: 1
   _attackSpeedScaleFactor: 0
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _launchPoints: []
   _launchDelaySeconds: 0
-  bulletPrefabs: []
-  bulletCount: 0
+  _bulletPrefabs: []
+  _bulletCount: 0
   launchPatternFactory:
     Type: 1
     DirectLaunchPattern:

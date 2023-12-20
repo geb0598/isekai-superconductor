@@ -146,8 +146,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1228d7fd2f5ea945b570120aec0e653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   id: 3
-  prices: 00000000
+  prices: 64000000c80000002c010000f401000058020000bc02000020030000e803000000000000
   descriptions:
-  - empty4
+  - Get Weapon
+  - Damage Increase
+  - Damage Increase
+  - Upgrade Weapon
+  - Damage Increase
+  - Damage Increase
+  - Damage Increase
+  - Upgrade Weapon
+  - Level Max
   storeItemDescriptionPrefab: {fileID: 1638925574783661598, guid: 0077e99c03900784b81ef015a1244aef, type: 3}

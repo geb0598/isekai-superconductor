@@ -17,6 +17,7 @@ public class GameResultCanvas : MonoBehaviour
     public GridLayoutGroup[] slots;
     public Text[] weaponLevels;
     public Image activeWeaponImage;
+    public Text activeWeaponLevelText;
 
 
     private List<int> _weaponsId;
@@ -52,6 +53,9 @@ public class GameResultCanvas : MonoBehaviour
         {
             weaponLevels[i].text = WeaponManager.instance.GetWeapon(_weaponsId[i]).level == 0 ? "" : WeaponManager.instance.GetWeapon(_weaponsId[i]).level.ToString();
         }
+
+        activeWeaponLevelText.text = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).level.ToString();
+
         string activeWeaponName = WeaponManager.instance.GetActiveWeapon(WeaponManager.instance.selectedActiveWeaponId).name;
         activeWeaponImage.sprite = Resources.Load<GameObject>("Weapon/" + activeWeaponName).GetComponent<SpriteRenderer>().sprite;
     }

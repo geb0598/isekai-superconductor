@@ -15,4 +15,4 @@ MonoBehaviour:
   defaultMaxHp: 7.5
   speed: 2
   knockBackCoefficient: 500
-  attackSpeed: 1
+  attackSpeed: 2

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492a7675a78ceda47a6ce942ed2ae66c, type: 3}
   m_Name: MeleeEnemyGroupF
   m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 1473637629164032589, guid: e457084d25efacf4ca5f09f7e13db2a0, type: 3}
+  - {fileID: 5001519291861360568, guid: 63dfc4976fc662a469f6714d082ffb22, type: 3}
   enemies: 0e0000000f000000
   probabilities:
   - 0.4
