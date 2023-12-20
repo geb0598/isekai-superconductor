@@ -25,7 +25,9 @@ public class StoreItem : DropItem
     public override void Get()
     {
         int level = (type == 0) ? WeaponManager.instance.GetWeapon(id).level : WeaponManager.instance.GetActiveWeapon(id).level;
-        Debug.Log(string.Format("Get Item : " + name.Replace("StoreItem", "").Replace("(Clone)", "") + "level: {0}", level));
+
+        if (level == 8)
+            return;
 
         if (PlayerManager.instance.coin < prices[level])
         {

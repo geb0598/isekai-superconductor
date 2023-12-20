@@ -23,6 +23,7 @@ public class StoreItemDescription : MonoBehaviour
     private void UpdateDescription()
     {
         int level;
+
         if (storeItem.GetComponent<StoreItem>().type == 0)
             level = WeaponManager.instance.GetWeapon(storeItem.GetComponent<StoreItem>().id).level;
         else 
@@ -33,7 +34,10 @@ public class StoreItemDescription : MonoBehaviour
         descriptionText.text = storeItem.GetComponent<StoreItem>().descriptions[level];
         priceText.text = string.Format("Price : {0} Coin",storeItem.GetComponent<StoreItem>().prices[level]);
 
-        Debug.Log(string.Format("Description : {0} Weapon Level = {1}", nameText.text, level));
+        if (level == 8)
+        {
+            levelText.text = string.Format("Level : Level MAX");
+        }
     }
 
 

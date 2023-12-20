@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   id: 0
-  prices: 64000000c80000002c010000f401000058020000bc02000020030000e8030000
+  prices: 64000000c80000002c010000f401000058020000bc02000020030000e803000000000000
   descriptions:
   - Get Weapon
   - Damage Increase
@@ -158,4 +158,5 @@ MonoBehaviour:
   - Damage Increase
   - Damage Increase
   - Upgrade Weapon
+  - Level Max
   storeItemDescriptionPrefab: {fileID: 1638925574783661598, guid: 0077e99c03900784b81ef015a1244aef, type: 3}
