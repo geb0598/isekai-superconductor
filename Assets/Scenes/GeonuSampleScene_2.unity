@@ -15945,6 +15945,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1157793768}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayBgm
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerLevelUpEvent:
     m_PersistentCalls:
       m_Calls:
@@ -29386,6 +29398,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1157793768}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayBgm
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1069317088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35226,7 +35250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 0.5
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 2756a92d41c8bda43904e3e360261bf1, type: 3}
   bgmVolume: 0.5
   sfxClips: []
   sfxVolume: 0.5
