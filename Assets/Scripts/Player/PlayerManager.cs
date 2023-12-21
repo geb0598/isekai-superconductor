@@ -130,7 +130,13 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator OnPlayerInvincible()
     {
         _isInvincible = true;
+        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+        Color color = spriteRenderer.color;
+        color.a = 0.5f;
+        spriteRenderer.color = color;
         yield return new WaitForSeconds(_invincibleTimeSeconds);
+        color.a = 1.0f;
+        spriteRenderer.color = color;
         _isInvincible = false;
     }
 

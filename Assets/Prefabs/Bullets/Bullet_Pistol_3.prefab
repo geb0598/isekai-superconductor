@@ -86,10 +86,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ac9422aad65dc46a0ce7e480f8fdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 3
+  id: 10
   _collisionEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 10
-  id: 0
+  _hasNoDamage: 0
   _speed: 15
   _isPenetrative: 0
 --- !u!114 &49775414423199169
@@ -129,10 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4bfdd25e16fa444836a0db057fe22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _launchPoints: []
+  _launchDelaySeconds: 0
   _bulletPrefabs:
   - {fileID: 4027783587094365756, guid: 7058bad1327bb2d488951f112f2dda24, type: 3}
   _bulletCount: 10
-  _launchDelaySeconds: 0
   launchPatternFactory:
     Type: 1
     DirectLaunchPattern:

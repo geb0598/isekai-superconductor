@@ -170,10 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf65ed97ef5fd0d4aa82dea7c6906e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 3
+  id: 1
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 1
-  id: 0
+  _hasNoDamage: 0
   _isFollowingLauncher: 0
 --- !u!1001 &866593669
 PrefabInstance:

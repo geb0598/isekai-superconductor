@@ -84,11 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdae9839a2dea3849a32059c23aea485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 3
+  id: 14
   _collisionEffect: {fileID: 0}
   _destroyEffect: {fileID: 0}
   _lifeTimeSeconds: 10
   _hasNoDamage: 0
-  id: 0
   _speed: 0
   _isPenetrative: 0
   _defaultSpeed: 8

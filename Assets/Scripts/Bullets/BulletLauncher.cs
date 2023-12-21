@@ -60,8 +60,9 @@ public class BulletLauncher : MonoBehaviour
     {
         foreach (Vector2 target in _targets)
         {
-            // GameObject bulletInstance = GameManager.GetInstance().poolManager.Get(3, bulletPrefabs[_currentBulletIndex].GetComponent<Bullet>().id);
-            GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
+            PooledObject bulletPool = _bulletPrefabs[_currentBulletIndex].GetComponent<PooledObject>();
+            // GameObject bulletInstance = Instantiate(_bulletPrefabs[_currentBulletIndex]);
+            GameObject bulletInstance = bulletPool.GetPooledObject();
             Bullet bullet = bulletInstance.GetComponent<Bullet>();
             if (gameObject.CompareTag("Weapon"))
             {

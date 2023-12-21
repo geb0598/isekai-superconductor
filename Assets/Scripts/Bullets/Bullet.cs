@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Bullet : MonoBehaviour
+public abstract class Bullet : PooledObject
 {
     [SerializeField] protected GameObject _collisionEffect;
     [SerializeField] protected GameObject _destroyEffect;
     [SerializeField] protected float _lifeTimeSeconds;
     [SerializeField] private bool _hasNoDamage;
-
-    public int id;
 
     protected Rigidbody2D _rigidbody;
     protected SpriteRenderer _spriteRenderer;
@@ -48,18 +46,19 @@ public abstract class Bullet : MonoBehaviour
         {
             Instantiate(_destroyEffect, transform.position, Quaternion.identity);
         }
-        // Destroy(gameObject);
         gameObject.SetActive(false);
     }
 
     protected void ApplyDamage(Collider2D collision)
     {
+        Debug.Log(_damage);
         if (_hasNoDamage)
         {
             return;
         }
         if (_isPlayerBullet && collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log(_damage);
             collision.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
         }
         else if (!_isPlayerBullet && collision.gameObject.CompareTag("Player"))
